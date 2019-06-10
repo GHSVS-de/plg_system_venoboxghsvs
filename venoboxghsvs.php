@@ -10,6 +10,8 @@ class PlgSystemvenoboxGhsvs extends CMSPlugin
 
 	function __construct(&$subject, $config = array())
 	{
+		parent::__construct(&$subject, $config = array());
+
 		if (!$this->app->isClient('administrator'))
 		{
 			HTMLHelper::addIncludePath(__DIR__ . '/html');
