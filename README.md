@@ -3,6 +3,11 @@ Don't use! Work in progress
 
 Integrate Venobox JHtml helper.
 
+Last tests:
+- Joomla 4.0.0-dev
+- Joomla 3.9.7-dev
+- PHP7.3
+
 Usage:
 ```
 use Joomla\CMS\HTML\HTMLHelper;
