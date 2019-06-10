@@ -11,7 +11,7 @@ use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Plugin\PluginHelper;
 use Joomla\Registry\Registry;
 
-class PlgvenoboxghsvsHtmlHelper
+class JHtmlPlgvenoboxghsvs
 {
 
 	protected static $loaded = array();
@@ -35,10 +35,10 @@ class PlgvenoboxghsvsHtmlHelper
 			'closeColor' => '#f00',
 			//'infinigall' => false,
 			'arrowsColor' => "#000000",
-			'venoboxVersion' => $plgParams->get('venoboxVersion', '1.8.3'),
 			'developer_mode' => $plgParams->get('developer_mode', 0),
 			'ready_or_load' => $plgParams->get('ready_or_load', 'ready')
 		);
+
 		$removeForVenobox = array(
 			'developer_mode',
 			'ready_or_load',
@@ -57,16 +57,13 @@ class PlgvenoboxghsvsHtmlHelper
 		if (empty(static::$loaded[__METHOD__ . '_core']))
 		{
 			$loadOptions = array(
-				'framework' => false,
-				'pathOnly' => false,
-				'detectBrowser' => false,
 				'relative' => true,
 				'version' => $options['developer_mode'] ? uniqid() : 'auto'
 			);
 
 			HTMLHelper::_('jquery.framework');
 
-			$path = static::$basepath . '/' . $options['venoboxVersion'] . '/';
+			$path = static::$basepath . '/';
 
 			HTMLHelper::_('stylesheet', $path . 'venobox.css', $loadOptions);
 			HTMLHelper::_('script', $path . 'venobox.min.js', $loadOptions);
