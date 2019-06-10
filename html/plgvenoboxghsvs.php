@@ -42,7 +42,6 @@ class JHtmlPlgvenoboxghsvs
 		$removeForVenobox = array(
 			'developer_mode',
 			'ready_or_load',
-			'venoboxVersion'
 		);
 
 		$options = array_merge($options_default, $options);
