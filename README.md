@@ -4,6 +4,7 @@ Don't use! Work in progress
 Integrate Venobox JHtml helper.
 
 Last tests:
+- V2019.06.11
 - Joomla 4.0.0-dev
 - Joomla 3.9.7-dev
 - PHP7.3
