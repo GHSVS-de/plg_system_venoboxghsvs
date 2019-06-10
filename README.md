@@ -8,6 +8,7 @@ Last tests:
 - Joomla 4.0.0-dev
 - Joomla 3.9.7-dev
 - PHP7.3
+- Only installation, updates and script loading tested.
 
 Usage:
 ```
