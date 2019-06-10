@@ -1,32 +1,35 @@
 <?php
 /*
 Aufruf via:
-JHtml::_('plgvenoboxghsvs.venobox');
+HTMLHelper::_('plgvenoboxghsvs.venobox');
 */
-?>
-<?php
+
 defined('JPATH_BASE') or die;
+
+use Joomla\CMS\Factory;
+use Joomla\CMS\HTML\HTMLHelper;
+use Joomla\CMS\Plugin\PluginHelper;
 use Joomla\Registry\Registry;
 
-abstract class JHtmlPlgVenoboxghsvs
+class PlgvenoboxghsvsHtmlHelper
 {
-	
+
 	protected static $loaded = array();
 	protected static $loadedPlugins = array();
-	
+
 	// media-Ordner:
 	protected static $basepath = 'plg_system_venoboxghsvs/venobox';
 
 	public static function venobox($selector = '.venobox', $options = array())
 	{
-		
+
 		$options = (array) $options;
 
 		$plgParams = self::getPluginParams(array('system', 'venoboxghsvs'));
 
 		$options_default = array(
 			'titleattr' => 'data-title',
-			'titleBackground' => '#fff', 
+			'titleBackground' => '#fff',
 			'titleColor' => '#000',
 			'closeBackground' => '#fff',
 			'closeColor' => '#f00',
@@ -48,7 +51,7 @@ abstract class JHtmlPlgVenoboxghsvs
 		// Nein, weil es keinen Sinn macht, pro Selektor doppelt zu laden.
 		// Deshalb auch $sig ohne $options.
 		//ksort($options);
-		
+
 		$sig = md5($selector);
 
 		if (empty(static::$loaded[__METHOD__ . '_core']))
@@ -61,37 +64,31 @@ abstract class JHtmlPlgVenoboxghsvs
 				'version' => $options['developer_mode'] ? uniqid() : 'auto'
 			);
 
-			JHtml::_('jquery.framework');
+			HTMLHelper::_('jquery.framework');
 
 			$path = static::$basepath . '/' . $options['venoboxVersion'] . '/';
 
-			JHtml::_('stylesheet', $path . 'venobox.css', $loadOptions);
-			JHtml::_('script', $path . 'venobox.min.js', $loadOptions);
-			
+			HTMLHelper::_('stylesheet', $path . 'venobox.css', $loadOptions);
+			HTMLHelper::_('script', $path . 'venobox.min.js', $loadOptions);
+
 			static::$loaded[__METHOD__ . '_core'] = 1;
 		}
 
 		if (empty(static::$loaded[__METHOD__ . '_' . $sig]))
 		{
-		
-			$js = ';/* START plg_system_venoboxghsvs */' . "\n";
-
+			$js            = ';/* START plg_system_venoboxghsvs */' . "\n";
 			$ready_or_load = $options['ready_or_load'] === 'ready'
 				? 'jQuery(document).ready' : 'jQuery(window).load';
-
-			$options = array_diff_key($options, array_flip($removeForVenobox));
+			$options       = array_diff_key($options, array_flip($removeForVenobox));
 
 			$js .= $ready_or_load . '(function(){jQuery("' . $selector . '").venobox(' . json_encode($options) . ');});';
 
-			JFactory::getDocument()->addScriptDeclaration($js);
-			
-			
-			
+			Factory::getDocument()->addScriptDeclaration($js);
 			static::$loaded[__METHOD__ . '_' . $sig] = 1;
 		}
 		return;
 	}
-	
+
 	/**
 	 * Lädt auch Params aus nicht aktivierten Plugins.
    * Fügt den Params isEnabled- und isInstalled-Parameter hinzu.
@@ -103,10 +100,10 @@ abstract class JHtmlPlgVenoboxghsvs
 			return false;
 		}
 		$key = implode('', $plugin);
-		
+
   	if(empty(self::$loadedPlugins[$key]) || !(self::$loadedPlugins[$key] instanceof Registry))
   	{
-			$pluginP = JPluginHelper::getPlugin($plugin[0], $plugin[1]);
+			$pluginP = PluginHelper::getPlugin($plugin[0], $plugin[1]);
 
 			if (!empty($pluginP->params))
 			{
@@ -143,5 +140,5 @@ abstract class JHtmlPlgVenoboxghsvs
 			}
 		}
 		return self::$loadedPlugins[$key];
-	} 
+	}
 }

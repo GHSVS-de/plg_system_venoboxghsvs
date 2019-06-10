@@ -9,10 +9,19 @@
 	<authorUrl>https://www.ghsvs.de</authorUrl>
 	<version>2019.06.10</version>
 	<description>PLG_SYSTEM_VENOBOXGHSVS_XML_DESCRIPTION</description>
-	<versionhistory>
-	2018.07.23:
-	- maler-waende-farben-j3.ghsvs.de
-	</versionhistory>
+
+	<updateservers>
+		<server type="extension" priority="1" name="PLG_SYSTEM_VENOBOXGHSVS">https://raw.githubusercontent.com/GHSVS-de/upadateservers/master/venoboxghsvs-update.xml</server>
+	</updateservers>
+
+	<changelogurl>https://raw.githubusercontent.com/GHSVS-de/upadateservers/master/venoboxghsvs-changelog.xml</changelogurl>
+
+	<scriptfile>installerScript.php</scriptfile>
+	<minimumPhp>7.2.0</minimumPhp>
+	<!--<maximumPhp>7.3.999999</maximumPhp>-->
+	<minimumJoomla>4.0.0</minimumJoomla>
+	<!--<maximumJoomla>3.9.99999</maximumJoomla>-->
+	<allowDowngrades>1</allowDowngrades>
 
 	<files>
 		<filename plugin="venoboxghsvs">venoboxghsvs.php</filename>
@@ -31,11 +40,9 @@
 		<fields name="params" addfieldpath="plugins/system/venoboxghsvs/fields">
 
 			<fieldset name="basic">
-				<field name="backendAssets" type="plgsystemvenoboxghsvs.backend" label="" />
+				<field name="backendAssets" type="plgsystemvenoboxghsvs.assetsbe"
+					loadcss="true" loadjs="false" loadJQuery="false"/>
 			</fieldset><!--basic-->
-
-			<fieldset name="venoboxparams" label="Venobox-Settings">
-			</fieldset><!--/venoboxparams-->
 
 		</fields><!--/params-->
 	</config>
