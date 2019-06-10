@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<extension version="3.8" type="plugin" group="system" method="upgrade">
+<extension version="4.0" type="plugin" group="system" method="upgrade">
 	<name>PLG_SYSTEM_VENOBOXGHSVS</name>
 	<author>G@HService Berlin Neukölln, Volkmar Volli Schlothauer</author>
 	<creationDate>2018-07-23</creationDate>
-	<copyright>Copyright (C) 2018, G@HService Berlin Neukölln, Volkmar Volli Schlothauer. All rights reserved.</copyright>
+	<copyright>Copyright (C) 2018-2019, G@HService Berlin Neukölln, Volkmar Volli Schlothauer. All rights reserved.</copyright>
 	<license>GNU GPLv3 http://www.gnu.org/licenses/gpl-3.0.html See LICENSE.txt</license>
 	<authorEmail></authorEmail>
 	<authorUrl>https://www.ghsvs.de</authorUrl>
-	<version>2018.07.23</version>
+	<version>2019.06.10</version>
 	<description>PLG_SYSTEM_VENOBOXGHSVS_XML_DESCRIPTION</description>
 	<versionhistory>
 	2018.07.23:
@@ -31,20 +31,10 @@
 		<fields name="params" addfieldpath="plugins/system/venoboxghsvs/fields">
 
 			<fieldset name="basic">
-				
 				<field name="backendAssets" type="plgsystemvenoboxghsvs.backend" label="" />
-
 			</fieldset><!--basic-->
 
 			<fieldset name="venoboxparams" label="Venobox-Settings">
-
-				<field name="venoboxVersion" type="folderlist"
-					default="1.8.3" hide_none="true" hide_default="true"
-					label="PLG_SYSTEM_VENOBOXGHSVS_VENOBOXVERSION"
-					description=""
-					directory="media/plg_system_venoboxghsvs/css/venobox" filter="" exclude="" stripext="">
-				</field>
-
 			</fieldset><!--/venoboxparams-->
 
 		</fields><!--/params-->
