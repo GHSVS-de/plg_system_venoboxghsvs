@@ -66,7 +66,7 @@ class plgSystemVenoboxGhsvsInstallerScript extends InstallerScript
 				return false;
 			}
 
-			if ((int) $manifest->allowDowngrades === 1))
+			if ((int) $manifest->allowDowngrades === 1)
 			{
 				$this->allowDowngrades = true;
 			}
