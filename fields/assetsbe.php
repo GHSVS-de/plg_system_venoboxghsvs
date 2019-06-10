@@ -34,7 +34,7 @@ class plgSystemVenoboxGhsvsFormFieldAssetsbe extends FormField
 		$loadJQuery = isset($this->element['loadJQuery'])
 			? (string) $this->element['loadJQuery'] : true;
 
-		$file = $basePath . '/backend';
+		$file = self::$basePath . '/backend';
 
 		if ($loadcss !== 'false')
 		{
