@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.8" type="plugin" group="system" method="upgrade">
+	<name>PLG_SYSTEM_VENOBOXGHSVS</name>
+	<author>G@HService Berlin Neukölln, Volkmar Volli Schlothauer</author>
+	<creationDate>2018-07-23</creationDate>
+	<copyright>Copyright (C) 2018, G@HService Berlin Neukölln, Volkmar Volli Schlothauer. All rights reserved.</copyright>
+	<license>GNU GPLv3 http://www.gnu.org/licenses/gpl-3.0.html See LICENSE.txt</license>
+	<authorEmail></authorEmail>
+	<authorUrl>https://www.ghsvs.de</authorUrl>
+	<version>2018.07.23</version>
+	<description>PLG_SYSTEM_VENOBOXGHSVS_XML_DESCRIPTION</description>
+	<versionhistory>
+	2018.07.23:
+	- maler-waende-farben-j3.ghsvs.de
+	</versionhistory>
+
+	<files>
+		<filename plugin="venoboxghsvs">venoboxghsvs.php</filename>
+		<filename>LICENSE.txt</filename>
+		<folder>fields</folder>
+		<folder>language</folder>
+		<folder>html</folder>
+	</files>
+
+	<media destination="plg_system_venoboxghsvs" folder="media">
+		<folder>css</folder>
+		<folder>js</folder>
+	</media>
+
+	<config>
+		<fields name="params" addfieldpath="plugins/system/venoboxghsvs/fields">
+
+			<fieldset name="basic">
+				
+				<field name="backendAssets" type="plgsystemvenoboxghsvs.backend" label="" />
+
+			</fieldset><!--basic-->
+
+			<fieldset name="venoboxparams" label="Venobox-Settings">
+
+				<field name="venoboxVersion" type="folderlist"
+					default="1.8.3" hide_none="true" hide_default="true"
+					label="PLG_SYSTEM_VENOBOXGHSVS_VENOBOXVERSION"
+					description=""
+					directory="media/plg_system_venoboxghsvs/css/venobox" filter="" exclude="" stripext="">
+				</field>
+
+			</fieldset><!--/venoboxparams-->
+
+		</fields><!--/params-->
+	</config>
+</extension>
