@@ -6,8 +6,13 @@ use Joomla\CMS\Plugin\CMSPlugin;
 
 class PlgSystemvenoboxGhsvs extends CMSPlugin
 {
+	protected $app;
+
 	function __construct(&$subject, $config = array())
 	{
-		HTMLHelper::addIncludePath(__DIR__ . '/html');
+		if (!$this->app->isClient('administrator'))
+		{
+			HTMLHelper::addIncludePath(__DIR__ . '/html');
+		}
 	}
 }
