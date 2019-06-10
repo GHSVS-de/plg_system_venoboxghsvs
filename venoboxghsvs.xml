@@ -7,7 +7,7 @@
 	<license>GNU GPLv3 http://www.gnu.org/licenses/gpl-3.0.html See LICENSE.txt</license>
 	<authorEmail></authorEmail>
 	<authorUrl>https://www.ghsvs.de</authorUrl>
-	<version>2019.06.10</version>
+	<version>2019.06.11</version>
 	<description>PLG_SYSTEM_VENOBOXGHSVS_XML_DESCRIPTION</description>
 
 	<updateservers>
@@ -26,6 +26,7 @@
 	<files>
 		<filename plugin="venoboxghsvs">venoboxghsvs.php</filename>
 		<filename>LICENSE.txt</filename>
+		<filename>installerScript.php</filename>
 		<folder>fields</folder>
 		<folder>language</folder>
 		<folder>html</folder>
