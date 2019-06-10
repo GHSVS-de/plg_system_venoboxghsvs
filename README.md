@@ -6,9 +6,26 @@ Integrate Venobox JHtml helper.
 Usage:
 ```
 use Joomla\CMS\HTML\HTMLHelper;
-HTMLHelper::_('plgvenoboxghsvs.venobox');
+HTMLHelper::_('plgvenoboxghsvs.venobox', $selector = '.venobox', $options = array());
 ```
 or
 ```
-JHtml::_('plgvenoboxghsvs.venobox');
+JHtml::_('plgvenoboxghsvs.venobox', $selector = '.venobox', $options = array());
 ```
+
+Optional options
+
+```
+$options_default = array(
+	'titleattr' => 'data-title',
+	'titleBackground' => '#fff',
+	'titleColor' => '#000',
+	'closeBackground' => '#fff',
+	'closeColor' => '#f00',
+	//'infinigall' => false,
+	'arrowsColor' => "#000000",
+	'developer_mode' => $plgParams->get('developer_mode', 0), // Make uniqid() version 
+	'ready_or_load' => $plgParams->get('ready_or_load', 'ready') // JQuery default:ready or 'load'
+);
+```
+See others at http://veno.es/venobox/
