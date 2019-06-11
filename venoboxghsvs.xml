@@ -17,9 +17,9 @@
 	<changelogurl>https://raw.githubusercontent.com/GHSVS-de/upadateservers/master/venoboxghsvs-changelog.xml</changelogurl>
 
 	<scriptfile>installerScript.php</scriptfile>
-	<minimumPhp>7.2.0</minimumPhp>
+	<minimumPhp>7.0.0</minimumPhp>
 	<!--<maximumPhp>7.3.999999</maximumPhp>-->
-	<minimumJoomla>4.0.0</minimumJoomla>
+	<minimumJoomla>3.9.0</minimumJoomla>
 	<!--<maximumJoomla>3.9.99999</maximumJoomla>-->
 	<allowDowngrades>1</allowDowngrades>
 
