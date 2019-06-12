@@ -19,8 +19,7 @@ Usage:
 - Add PHP to your Joomla, e.g. in template.
 
 ```
-use Joomla\CMS\HTML\HTMLHelper;
-HTMLHelper::_('plgvenoboxghsvs.venobox', $selector = '.venobox', $options = array());
+Joomla\CMS\HTML\HTMLHelper::_('plgvenoboxghsvs.venobox', $selector = '.venobox', $options = array());
 ```
 or
 ```
