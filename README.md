@@ -1,8 +1,9 @@
 # plg_system_venoboxghsvs
-Don't use! Work in progress
+Use at your own risk! Work in progress.
 
 - Load VenoBox library (https://github.com/nicolafranchini/VenoBox)
 - Integrate Venobox JHtml helper.
+- - Loads standard CSS and JS.
 
 Last tests:
 - V2019.06.11
@@ -12,6 +13,11 @@ Last tests:
 - Only installation, updates and script loading tested.
 
 Usage:
+
+- Create one or more image with CSS class=venobox that shall open in a lightbox popup.
+
+- Add PHP to your Joomla, e.g. in template.
+
 ```
 use Joomla\CMS\HTML\HTMLHelper;
 HTMLHelper::_('plgvenoboxghsvs.venobox', $selector = '.venobox', $options = array());
