@@ -22,8 +22,10 @@ class JHtmlPlgvenoboxghsvs
 
 	public static function venobox($selector = '.venobox', $options = array())
 	{
-
-		$options = (array) $options;
+		if (!($selector = trim($selector)) || !is_array($options))
+		{
+			return;
+		}
 
 		$plgParams = self::getPluginParams(array('system', 'venoboxghsvs'));
 
@@ -35,52 +37,48 @@ class JHtmlPlgvenoboxghsvs
 			'closeColor' => '#f00',
 			//'infinigall' => false,
 			'arrowsColor' => "#000000",
-			'developer_mode' => $plgParams->get('developer_mode', 0),
 			'ready_or_load' => $plgParams->get('ready_or_load', 'ready')
 		);
 
 		$removeForVenobox = array(
-			'developer_mode',
 			'ready_or_load',
 		);
 
-		$options = array_merge($options_default, $options);
+		if (empty(static::$loaded[__METHOD__]['core']))
+		{
+			$attribs = array();
+			$min = JDEBUG ? '' : '.min';
+			$version = JDEBUG ? time() : 'auto';
+			
+			HTMLHelper::_('jquery.framework');
+			HTMLHelper::_('stylesheet',
+				static::$basepath . '/' . 'venobox' . $min . '.css',
+				array('version' => $version, 'relative' => true),
+				$attribs
+			);
+			HTMLHelper::_('script',
+				static::$basepath . '/' . 'venobox' . $min . '.js',
+				array('version' => $version, 'relative' => true),
+				$attribs
+			);
 
-		// Um nach Möglichkeit doppeltes Laden zu verhindern, wenn nur Reihenfolge anders.
-		// Nein, weil es keinen Sinn macht, pro Selektor doppelt zu laden.
-		// Deshalb auch $sig ohne $options.
-		//ksort($options);
+			static::$loaded[__METHOD__]['core'] = 1;
+		}
 
 		$sig = md5($selector);
 
-		if (empty(static::$loaded[__METHOD__ . '_core']))
+		if (empty(static::$loaded[__METHOD__][$sig]))
 		{
-			$loadOptions = array(
-				'relative' => true,
-				'version' => $options['developer_mode'] ? uniqid() : 'auto'
-			);
-
-			HTMLHelper::_('jquery.framework');
-
-			$path = static::$basepath . '/';
-
-			HTMLHelper::_('stylesheet', $path . 'venobox.css', $loadOptions);
-			HTMLHelper::_('script', $path . 'venobox.min.js', $loadOptions);
-
-			static::$loaded[__METHOD__ . '_core'] = 1;
-		}
-
-		if (empty(static::$loaded[__METHOD__ . '_' . $sig]))
-		{
-			$js            = ';/* START plg_system_venoboxghsvs */' . "\n";
+			$options = array_merge($options_default, $options);
+			$options = array_diff_key($options, array_flip($removeForVenobox));
 			$ready_or_load = $options['ready_or_load'] === 'ready'
-				? 'jQuery(document).ready' : 'jQuery(window).load';
-			$options       = array_diff_key($options, array_flip($removeForVenobox));
+				? 'jQuery(document).ready(' : 'jQuery(window).on("load",';
 
-			$js .= $ready_or_load . '(function(){jQuery("' . $selector . '").venobox(' . json_encode($options) . ');});';
+			$js = $ready_or_load
+				. 'function(){jQuery("' . $selector . '").venobox(' . json_encode($options) . ');});';
 
 			Factory::getDocument()->addScriptDeclaration($js);
-			static::$loaded[__METHOD__ . '_' . $sig] = 1;
+			static::$loaded[__METHOD__][$sig] = 1;
 		}
 		return;
 	}
