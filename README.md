@@ -8,9 +8,12 @@ Use at your own risk! Work in progress.
 Last tests:
 - V2019.06.11
 - Joomla 4.0.0-dev
-- Joomla 3.9.7-dev
+- Joomla 3.9.9-dev
 - PHP7.3
 - Only installation, updates and script loading tested.
+
+Venobox js requires:
+- jQuery >= 1.7.0
 
 Usage:
 
@@ -26,7 +29,7 @@ or
 JHtml::_('plgvenoboxghsvs.venobox', $selector = '.venobox', $options = array());
 ```
 
-Optional options
+Optional options (See others at http://veno.es/venobox/).
 
 ```
 $options_default = array(
@@ -37,8 +40,13 @@ $options_default = array(
 	'closeColor' => '#f00',
 	//'infinigall' => false,
 	'arrowsColor' => "#000000",
-	'developer_mode' => $plgParams->get('developer_mode', 0), // Make uniqid() version 
-	'ready_or_load' => $plgParams->get('ready_or_load', 'ready') // JQuery default:ready or 'load'
-);
+	// Shall JQuery load on 'ready' or on 'load'. Default: 'ready'.
+	'ready_or_load' => $plgParams->get('ready_or_load', 'ready')
+); 
 ```
-See others at http://veno.es/venobox/
+
+I you don't want to activate the plugin include the HTMLHelper class yourself before you use above mentioned calls
+
+```
+Joomla\CMS\HTML\HTMLHelper::addIncludePath(JPATH_SITE . '/plugins/system/venoboxghsvs/html');
+```
