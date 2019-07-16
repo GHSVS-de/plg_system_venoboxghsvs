@@ -49,7 +49,7 @@ class JHtmlPlgvenoboxghsvs
 			$attribs = array();
 			$min = JDEBUG ? '' : '.min';
 			$version = JDEBUG ? time() : 'auto';
-			
+
 			HTMLHelper::_('jquery.framework');
 			HTMLHelper::_('stylesheet',
 				static::$basepath . '/' . 'venobox' . $min . '.css',
@@ -70,9 +70,9 @@ class JHtmlPlgvenoboxghsvs
 		if (empty(static::$loaded[__METHOD__][$sig]))
 		{
 			$options = array_merge($options_default, $options);
-			$options = array_diff_key($options, array_flip($removeForVenobox));
 			$ready_or_load = $options['ready_or_load'] === 'ready'
 				? 'jQuery(document).ready(' : 'jQuery(window).on("load",';
+			$options = array_diff_key($options, array_flip($removeForVenobox));
 
 			$js = $ready_or_load
 				. 'function(){jQuery("' . $selector . '").venobox(' . json_encode($options) . ');});';
