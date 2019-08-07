@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension version="3.9" type="plugin" group="system" method="upgrade">
 	<name>PLG_SYSTEM_VENOBOXGHSVS</name>
-	<author>G@HService Berlin Neukölln, Volkmar Volli Schlothauer</author>
+	<author>G@HService Berlin Neukölln, Volkmar Volli Schlothauer (ghsvs.de)</author>
 	<creationDate>2018-07-23</creationDate>
-	<copyright>Copyright (C) 2018-2019, G@HService Berlin Neukölln, Volkmar Volli Schlothauer. All rights reserved.</copyright>
+	<copyright>Copyright (C) 2018-2019, G@HService Berlin Neukölln, Volkmar Volli Schlothauer (ghsvs.de). All rights reserved.</copyright>
 	<license>GNU GPLv3 http://www.gnu.org/licenses/gpl-3.0.html See LICENSE.txt</license>
 	<authorEmail></authorEmail>
 	<authorUrl>https://www.ghsvs.de</authorUrl>
