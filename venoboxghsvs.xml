@@ -7,7 +7,7 @@
 	<license>GNU GPLv3 http://www.gnu.org/licenses/gpl-3.0.html See LICENSE.txt</license>
 	<authorEmail></authorEmail>
 	<authorUrl>https://www.ghsvs.de</authorUrl>
-	<version>2019.07.04</version>
+	<version>2020.05.02</version>
 	<description>PLG_SYSTEM_VENOBOXGHSVS_XML_DESCRIPTION</description>
 
 	<updateservers>
@@ -15,6 +15,8 @@
 	</updateservers>
 
 	<changelogurl>https://raw.githubusercontent.com/GHSVS-de/upadateservers/master/venoboxghsvs-changelog.xml</changelogurl>
+
+	<infourl>https://updates.ghsvs.de/changelog.php?file=venoboxghsvs</infourl>
 
 	<scriptfile>installerScript.php</scriptfile>
 	<minimumPhp>7.0.0</minimumPhp>
