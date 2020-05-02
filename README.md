@@ -1,5 +1,4 @@
 # plg_system_venoboxghsvs
-Use at your own risk! Work in progress.
 
 - Load VenoBox library (https://github.com/nicolafranchini/VenoBox)
 - Integrate Venobox JHtml helper.
