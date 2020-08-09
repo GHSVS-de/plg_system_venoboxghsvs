@@ -5,10 +5,9 @@
 - - Loads standard CSS and JS.
 
 Last tests:
-- V2019.06.11
 - Joomla 4.0.0-dev
-- Joomla 3.9.9-dev
-- PHP7.3
+- Joomla 3.9.20
+- PHP7.4
 - Only installation, updates and script loading tested.
 
 Venobox js requires:
@@ -49,3 +48,18 @@ I you don't want to activate the plugin include the HTMLHelper class yourself be
 ```
 Joomla\CMS\HTML\HTMLHelper::addIncludePath(JPATH_SITE . '/plugins/system/venoboxghsvs/html');
 ```
+
+## Build
+- Adapt file `package.json`
+- Base/source files are in folder `/src/`
+- `npm install`
+- `node build.js`
+
+- External libraries like `venobox` are copied to `/src/` now (old files overriden!).
+- Files are copied to folder `/package/` afterwards and manifest XML file adapted automatically = Base for ZIP file.
+- New ZIP in folder `/dist/` afterwards.
+- Only tested with WSL 1/Debian on WIndows 10.
+
+### New release/update for Joomla
+- Create new GitHub release/tag.
+- You can add extension ZIP file to "Assets" list via Drag&Drop. See "Attach binaries by dropping them here or selecting them.".
