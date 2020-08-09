@@ -1,0 +1,57 @@
+{
+	"name": "plg_system_venoboxghsvs",
+	"version": "2020.08.09",
+	"minimumPhp": "7.0.0",
+	"maximumPhp": "",
+	"minimumJoomla": "3.9.0",
+	"maximumJoomla": "",
+	"allowDowngrades": "1",
+	"author": {
+		"name": "G@HService Berlin Neukölln, Volkmar Volli Schlothauer",
+		"email": "",
+		"url": "https://www.ghsvs.de"
+	},
+	"contributors": [
+		{
+			"name": "G@HService Berlin Neukölln, Volkmar Volli Schlothauer",
+			"email": "",
+			"url": "https://www.ghsvs.de"
+		}
+	],
+	"bugs": "https://github.com/GHSVS-de/plg_system_hyphenateghsvs/issues",
+	"homepage": "https://github.com/GHSVS-de/plg_system_hyphenateghsvs#readme",
+	"keywords": [
+		"joomla",
+		"system plugin",
+		"hyphens",
+		"hyphenation",
+		"hyphenopoly",
+		"hyphenator"
+	],
+	"private": false,
+	"description": "Joomla plugin. Integrate Venobox via JHtml/HtmlHelper in Joomla.",
+	"license": "GPL-3.0",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/GHSVS-de/plg_system_hyphenateghsvs.git"
+	},
+	"scripts": {
+		"g-build": "node build.js",
+		"g-npm-update-check": "ncu",
+		"g-ncu-override-json": "ncu -u"
+	},
+	"dependencies": {
+		"venobox": "^1.9.0"
+	},
+	"devDependencies": {
+		"adm-zip": "0.4.16",
+		"chalk": "^4.1.0",
+		"commander": "^5.1.0",
+		"fs-extra": "9.0.1",
+		"path": "^0.12.7",
+		"recursive-readdir": "^2.2.2",
+		"rimraf": "3.0.2"
+	},
+	"peerDependencies": {},
+	"browserslist": []
+}

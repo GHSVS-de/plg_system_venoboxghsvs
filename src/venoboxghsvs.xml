@@ -2,12 +2,13 @@
 <extension version="3.9" type="plugin" group="system" method="upgrade">
 	<name>PLG_SYSTEM_VENOBOXGHSVS</name>
 	<author>G@HService Berlin Neukölln, Volkmar Volli Schlothauer (ghsvs.de)</author>
-	<creationDate>2018-07-23</creationDate>
-	<copyright>Copyright (C) 2018-2019, G@HService Berlin Neukölln, Volkmar Volli Schlothauer (ghsvs.de). All rights reserved.</copyright>
+	<creationDate>{{version}}</creationDate>
+	<copyright>Copyright (C) 2018, G@HService Berlin Neukölln, Volkmar Volli Schlothauer (ghsvs.de). All rights reserved.</copyright>
 	<license>GNU GPLv3 http://www.gnu.org/licenses/gpl-3.0.html See LICENSE.txt</license>
 	<authorEmail></authorEmail>
 	<authorUrl>https://www.ghsvs.de</authorUrl>
-	<version>2020.05.02</version>
+	<version>{{version}}</version>
+	<venoboxVersion>{{venoboxVersion}}</venoboxVersion>
 	<description>PLG_SYSTEM_VENOBOXGHSVS_XML_DESCRIPTION</description>
 
 	<updateservers>
@@ -19,11 +20,11 @@
 	<infourl>https://updates.ghsvs.de/changelog.php?file=venoboxghsvs</infourl>
 
 	<scriptfile>installerScript.php</scriptfile>
-	<minimumPhp>7.0.0</minimumPhp>
-	<!--<maximumPhp>7.3.999999</maximumPhp>-->
-	<minimumJoomla>3.9.0</minimumJoomla>
-	<!--<maximumJoomla>3.9.99999</maximumJoomla>-->
-	<allowDowngrades>1</allowDowngrades>
+	<minimumPhp>{{minimumPhp}}</minimumPhp>
+	<maximumPhp>{{maximumPhp}}</maximumPhp>
+	<minimumJoomla>{{minimumJoomla}}</minimumJoomla>
+	<maximumJoomla>{{maximumJoomla}}</maximumJoomla>
+	<allowDowngrades>{{allowDowngrades}}</allowDowngrades>
 
 	<files>
 		<filename plugin="venoboxghsvs">venoboxghsvs.php</filename>
@@ -37,6 +38,8 @@
 	<media destination="plg_system_venoboxghsvs" folder="media">
 		<folder>css</folder>
 		<folder>js</folder>
+		<folder>_venobox-version</folder>
+		<filename>LICENSE_venobox.txt</filename>
 	</media>
 
 	<config>
