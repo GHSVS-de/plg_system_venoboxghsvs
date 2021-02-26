@@ -85,8 +85,8 @@ class JHtmlPlgvenoboxghsvs
 	}
 
 	/*
-		* Lädt auch Params aus nicht aktivierten Plugins.
-		* Fügt den Params isEnabled- und isInstalled-Parameter hinzu.
+	 * Lädt auch Params aus nicht aktivierten Plugins.
+	 * Fügt den Params isEnabled- und isInstalled-Parameter hinzu.
 	*/
 	protected static function getPluginParams($plugin = null)
 	{
