@@ -13,7 +13,6 @@ use Joomla\Registry\Registry;
 
 class JHtmlPlgvenoboxghsvs
 {
-
 	protected static $loaded = array();
 	protected static $loadedPlugins = array();
 
@@ -40,6 +39,7 @@ class JHtmlPlgvenoboxghsvs
 			'ready_or_load' => $plgParams->get('ready_or_load', 'ready')
 		);
 
+		// Don't use in JS configuration.
 		$removeForVenobox = array(
 			'ready_or_load',
 		);
@@ -75,7 +75,8 @@ class JHtmlPlgvenoboxghsvs
 			$options = array_diff_key($options, array_flip($removeForVenobox));
 
 			$js = $ready_or_load
-				. 'function(){jQuery("' . $selector . '").venobox(' . json_encode($options) . ');});';
+				. 'function(){jQuery("' . $selector . '").venobox('
+				. json_encode($options) . ');});';
 
 			Factory::getDocument()->addScriptDeclaration($js);
 			static::$loaded[__METHOD__][$sig] = 1;
@@ -83,9 +84,9 @@ class JHtmlPlgvenoboxghsvs
 		return;
 	}
 
-	/**
-	 * Lädt auch Params aus nicht aktivierten Plugins.
-   * Fügt den Params isEnabled- und isInstalled-Parameter hinzu.
+	/*
+		* Lädt auch Params aus nicht aktivierten Plugins.
+		* Fügt den Params isEnabled- und isInstalled-Parameter hinzu.
 	*/
 	protected static function getPluginParams($plugin = null)
 	{
@@ -93,10 +94,13 @@ class JHtmlPlgvenoboxghsvs
 		{
 			return false;
 		}
+
 		$key = implode('', $plugin);
 
-  	if(empty(self::$loadedPlugins[$key]) || !(self::$loadedPlugins[$key] instanceof Registry))
-  	{
+		if(
+			empty(self::$loadedPlugins[$key])
+			|| !(self::$loadedPlugins[$key] instanceof Registry)
+		){
 			$pluginP = PluginHelper::getPlugin($plugin[0], $plugin[1]);
 
 			if (!empty($pluginP->params))
@@ -106,18 +110,20 @@ class JHtmlPlgvenoboxghsvs
 				self::$loadedPlugins[$key]->set('isInstalled', 1);
 			}
 			// Falls deaktiviert, DB
-			elseif (file_exists(JPATH_SITE . '/plugins/' . implode('/', $plugin) . '/' . $plugin[1] . '.php'))
-			{
-				$db = JFactory::getDbo();
+			elseif (
+				file_exists(JPATH_SITE . '/plugins/' . implode('/', $plugin) . '/'
+					. $plugin[1] . '.php')
+			){
+				$db = Factory::getDbo();
 				$query = $db->getQuery(true)
-				->select('params')
-				->from('#__extensions')
-				->where('type = ' . $db->q('plugin'))
-				->where('element = ' . $db->q($plugin[1]))
-				->where('folder = ' . $db->q($plugin[0]))
-				;
+					->select('params')
+					->from('#__extensions')
+					->where('type = ' . $db->q('plugin'))
+					->where('element = ' . $db->q($plugin[1]))
+					->where('folder = ' . $db->q($plugin[0]));
 				$db->setQuery($query);
 				$params = $db->loadResult();
+
 				if (!empty($params))
 				{
 					self::$loadedPlugins[$key] = new Registry($params);
