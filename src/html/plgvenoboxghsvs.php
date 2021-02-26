@@ -21,6 +21,11 @@ class JHtmlPlgvenoboxghsvs
 
 	public static function venobox($selector = '.venobox', $options = array())
 	{
+		if ($selector === null)
+		{
+			$selector = '.venobox';
+		}
+
 		if (!($selector = trim($selector)) || !is_array($options))
 		{
 			return;
