@@ -75,12 +75,6 @@ JHtml::_('plgvenoboxghsvs.venobox'
 </a>
 ```
 
-I you don't want to activate the plugin include the HTMLHelper class yourself before you use above mentioned calls
-
-```
-Joomla\CMS\HTML\HTMLHelper::addIncludePath(JPATH_SITE . '/plugins/system/venoboxghsvs/html');
-```
-
 ## Build
 - `cd /mnt/z/git-kram/plg_system_venoboxghsvs/`
 - Adapt file `package.json` (version etc.).
