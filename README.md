@@ -1,46 +1,78 @@
 # plg_system_venoboxghsvs
 
-- Load VenoBox library (https://github.com/nicolafranchini/VenoBox)
-- Integrate Venobox JHtml helper.
+- Uses VenoBox library (https://github.com/nicolafranchini/VenoBox)
+- Integrates a Venobox JHtml helper.
 - - Loads standard CSS and JS.
-
-Last tests:
-- Joomla 4.0.0-dev
-- Joomla 3.9.20
-- PHP7.4
-- Only installation, updates and script loading tested.
 
 Venobox js requires:
 - jQuery >= 1.7.0
 
-Usage:
+## After updates of older versions than V2021.02.27
+- Save the plugin once afterwards!!
 
-- Create one or more image with CSS class=venobox that shall open in a lightbox popup.
+## Usage:
 
-- Add PHP to your Joomla, e.g. in template.
+- Create one or more `<a>` with `class=venobox` that shall open in a lightbox popup.
+- As href attribute use the image path.
 
 ```
-Joomla\CMS\HTML\HTMLHelper::_('plgvenoboxghsvs.venobox', $selector = '.venobox', $options = array());
+<a href="path/to/image.jpg" class="venobox">
+	Click me to open a fantastic image in pop-up
+</a>
+```
+- Add PHP snippet in your Joomla code, e.g. in template.
+
+```
+Joomla\CMS\HTML\HTMLHelper::_('plgvenoboxghsvs.venobox');
 ```
 or
 ```
-JHtml::_('plgvenoboxghsvs.venobox', $selector = '.venobox', $options = array());
+JHtml::_('plgvenoboxghsvs.venobox');
 ```
+### Configuration
+- Set your favorite default options in plugin configuration.
+- More possible venobox options can be found below headline "others" on https://veno.es/venobox.
+- All options are optional.
+- You can also use the `JHtml` call to pass over options.
 
-Optional options (See others at http://veno.es/venobox/).
+#### Example for other selector than `.venobox`
 
 ```
-$options_default = array(
-	'titleattr' => 'data-title',
-	'titleBackground' => '#fff',
-	'titleColor' => '#000',
-	'closeBackground' => '#fff',
-	'closeColor' => '#f00',
-	//'infinigall' => false,
-	'arrowsColor' => "#000000",
-	// Shall JQuery load on 'ready' or on 'load'. Default: 'ready'.
-	'ready_or_load' => $plgParams->get('ready_or_load', 'ready')
+JHtml::_('plgvenoboxghsvs.venobox'
+	[
+		'selector' => '.myCustomSelector'
+	]
 );
+```
+
+```
+<a href="path/to/image.jpg" class="myCustomSelector">
+	Click me to open a fantastic image in pop-up
+</a>
+```
+#### Example for other selector than `.venobox` plus individual configuration
+
+
+```
+JHtml::_('plgvenoboxghsvs.venobox'
+	[
+		'selector' => '.anotherCustomSelector',
+		'titleattr' => 'data-title',
+		'titleBackground' => '#fff',
+		'titleColor' => '#000',
+		'closeBackground' => '#fff',
+		'closeColor' => '#f00',
+		'arrowsColor' => "#000000",
+		// Shall JQuery load on 'ready' or on 'load'. Default: 'ready'.
+		'ready_or_load' => $plgParams->get('ready_or_load', 'ready')
+	]
+);
+```
+
+```
+<a href="path/to/image.jpg" class="anotherCustomSelector">
+	Click me to open a fantastic image in pop-up
+</a>
 ```
 
 I you don't want to activate the plugin include the HTMLHelper class yourself before you use above mentioned calls
