@@ -1,6 +1,5 @@
 /node_modules/
 /package/
-/dist/
 .DS_Store
 _notes/
 __done/
@@ -8,3 +7,6 @@ log.txt
 prepros.config
 prepros-6.config
 *.zip
+.vscode
+
+!/dist/**

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+
+	<field name="active" type="list" default="1"
+		label="PLG_SYSTEM_VENOBOXGHSVS_ACTIVE"
+		description=""
+		filter="integer">
+		<option value="0">JNO</option>
+		<option value="1">JYES</option>
+	</field>
+
+	<field name="parameter" type="text" default="" filter="string"
+		class="extended-width"
+		label="PLG_SYSTEM_VENOBOXGHSVS_PARAMETER"
+		description="" />
+
+	<field name="value" type="text" default="" filter="string"
+		class="extended-width"
+		label="PLG_SYSTEM_VENOBOXGHSVS_VALUE"
+		description="" />
+</form>

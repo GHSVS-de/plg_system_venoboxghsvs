@@ -40,7 +40,7 @@ $options_default = array(
 	'arrowsColor' => "#000000",
 	// Shall JQuery load on 'ready' or on 'load'. Default: 'ready'.
 	'ready_or_load' => $plgParams->get('ready_or_load', 'ready')
-); 
+);
 ```
 
 I you don't want to activate the plugin include the HTMLHelper class yourself before you use above mentioned calls
@@ -50,8 +50,10 @@ Joomla\CMS\HTML\HTMLHelper::addIncludePath(JPATH_SITE . '/plugins/system/venobox
 ```
 
 ## Build
-- Adapt file `package.json`
-- Base/source files are in folder `/src/`
+- `cd /mnt/z/git-kram/plg_system_venoboxghsvs/`
+- Adapt file `package.json` (version etc.).
+- Base/source files are in folder `/src/`.
+- Check for updates: `ncu`.
 - `npm install`
 - `node build.js`
 

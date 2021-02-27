@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension version="3.9" type="plugin" group="system" method="upgrade">
-	<name>PLG_SYSTEM_VENOBOXGHSVS</name>
-	<author>G@HService Berlin Neukölln, Volkmar Volli Schlothauer (ghsvs.de)</author>
-	<creationDate>{{version}}</creationDate>
-	<copyright>Copyright (C) 2018, G@HService Berlin Neukölln, Volkmar Volli Schlothauer (ghsvs.de). All rights reserved.</copyright>
-	<license>GNU GPLv3 http://www.gnu.org/licenses/gpl-3.0.html See LICENSE.txt</license>
+	<name>{{nameUpper}}</name>
+	<author>{{authorName}}</author>
+	<creationDate>{{creationDate}}</creationDate>
+	<copyright>{{copyright}}</copyright>
+	<license>{{licenseLong}}</license>
 	<authorEmail></authorEmail>
-	<authorUrl>https://www.ghsvs.de</authorUrl>
+	<authorUrl>{{authorUrl}}</authorUrl>
 	<version>{{version}}</version>
 	<venoboxVersion>{{venoboxVersion}}</venoboxVersion>
-	<description>PLG_SYSTEM_VENOBOXGHSVS_XML_DESCRIPTION</description>
+	<description>{{nameUpper}}_XML_DESCRIPTION</description>
 
 	<updateservers>
-		<server type="extension" priority="1" name="PLG_SYSTEM_VENOBOXGHSVS">https://raw.githubusercontent.com/GHSVS-de/upadateservers/master/venoboxghsvs-update.xml</server>
+		<server type="extension" priority="1" name="{{nameUpper}}">https://raw.githubusercontent.com/GHSVS-de/upadateservers/master/venoboxghsvs-update.xml</server>
 	</updateservers>
 
 	<changelogurl>https://raw.githubusercontent.com/GHSVS-de/upadateservers/master/venoboxghsvs-changelog.xml</changelogurl>
@@ -27,15 +27,17 @@
 	<allowDowngrades>{{allowDowngrades}}</allowDowngrades>
 
 	<files>
-		<filename plugin="venoboxghsvs">venoboxghsvs.php</filename>
+		<filename plugin="{{filename}}">{{filename}}.php</filename>
 		<filename>LICENSE.txt</filename>
 		<filename>installerScript.php</filename>
 		<folder>fields</folder>
-		<folder>language</folder>
+		<folder>Helper</folder>
 		<folder>html</folder>
+		<folder>language</folder>
+		<folder>myforms</folder>
 	</files>
 
-	<media destination="plg_system_venoboxghsvs" folder="media">
+	<media destination="{name}}" folder="media">
 		<folder>css</folder>
 		<folder>js</folder>
 		<folder>_venobox-version</folder>
@@ -49,6 +51,34 @@
 				<field name="backendAssets" type="plgsystemvenoboxghsvs.assetsbe"
 					loadcss="true" loadjs="false" loadJQuery="false"/>
 			</fieldset><!--basic-->
+
+			<fieldset name="configuration"
+				label="PLG_SYSTEM_VENOBOXGHSVS_FIELDSET_CONFIGURATION">
+
+				<field name="selector" type="text" default="" filter="string"
+					class="extended-width"
+					label="PLG_SYSTEM_VENOBOXGHSVS_SELECTOR" />
+
+				<field type="note" name="selectorSpacer"
+					class="alert alert-info"
+					label="PLG_SYSTEM_VENOBOXGHSVS_SELECTOR_DESC" />
+
+				<field type="spacer" name="configurationSpacer2"
+					label="Optional(!) custom configuration" />
+
+				<field type="note" name="configurationSpacer"
+					class="alertsss alert-infossss"
+					label="PLG_SYSTEM_VENOBOXGHSVS_FIELDSET_CONFIGURATION_DESC" />
+
+				<field name="configs" type="subform" min="0" max="30"
+					multiple="true"
+					label="" description=""
+					hiddenLabel="true"
+					formsource="plugins/system/venoboxghsvs/myforms/subform.xml"
+					layout="joomla.form.field.subform.repeatable-table" groupByFieldset="false"
+					default='{"configs0":{"active":0,"parameter":"titleattr","value":"data-title"},"configs1":{"active":0,"parameter":"titleBackground","value":"#fff"},"configs2":{"active":0,"parameter":"titleColor","value":"#000"},"configs3":{"active":0,"parameter":"closeBackground","value":"#fff"},"configs4":{"active":0,"parameter":"titlePosition","value":"top"},"configs5":{"active":0,"parameter":"closeColor","value":"#f00"},"configs6":{"active":0,"parameter":"ready_or_load","value":"load"},"configs7":{"active":0,"parameter":"arrowsColor","value":"#fff"}}'
+				/>
+			</fieldset>
 
 		</fields><!--/params-->
 	</config>
