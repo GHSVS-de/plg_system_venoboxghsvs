@@ -1,4 +1,4 @@
-# plg_system_venoboxghsvs
+# plg_system_venoboxghsvs for Joomla
 
 - Uses VenoBox library (https://github.com/nicolafranchini/VenoBox)
 - Integrates a Venobox JHtml helper.
