@@ -18,6 +18,9 @@ abstract class JHtmlPlgvenoboxghsvs
 
 	public static function venobox($selector = null, $options = [])
 	{
+		JLoader::register('VenoboxGhsvsHelper',
+			JPATH_PLUGINS . '/system/venoboxghsvs/Helper/VenoboxGhsvsHelper.php');
+
 		// START B\C shit. $selector is deprecated.
 		$argList = func_get_args();
 
