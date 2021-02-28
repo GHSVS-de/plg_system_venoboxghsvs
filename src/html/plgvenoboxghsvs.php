@@ -79,7 +79,7 @@ abstract class JHtmlPlgvenoboxghsvs
 		);
 			$ready_or_load = $options['ready_or_load'] === 'ready'
 				? 'jQuery(document).ready(' : 'jQuery(window).on("load",';
-		$js = $ready_or_load . 'function(){jQuery("' . $selector . '").venobox('
+		$js = $ready_or_load . 'function(){jQuery("' . $options['selector'] . '").venobox('
 				. json_encode($options) . ');});';
 
 			Factory::getDocument()->addScriptDeclaration($js);
