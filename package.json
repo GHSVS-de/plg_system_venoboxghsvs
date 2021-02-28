@@ -1,7 +1,7 @@
 {
 	"name": "plg_system_venoboxghsvs",
 	"filename": "venoboxghsvs",
-	"version": "2021.02.30",
+	"version": "2021.02.31",
 	"minimumPhp": "7.0.0",
 	"maximumPhp": "",
 	"minimumJoomla": "3.9.0",

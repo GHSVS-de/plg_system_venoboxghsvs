@@ -37,7 +37,7 @@
 		<folder>myforms</folder>
 	</files>
 
-	<media destination="{name}}" folder="media">
+	<media destination="{{name}}" folder="media">
 		<folder>css</folder>
 		<folder>js</folder>
 		<folder>_venobox-version</folder>

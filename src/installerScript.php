@@ -25,6 +25,26 @@ use Joomla\CMS\Log\Log;
 
 class plgSystemVenoboxGhsvsInstallerScript extends InstallerScript
 {
+	/**
+	 * A list of files to be deleted with method removeFiles().
+	 *
+	 * @var    array
+	 * @since  2.0
+	 */
+	protected $deleteFiles = array(
+	);
+
+	/**
+	 * A list of folders to be deleted with method removeFiles().
+	 *
+	 * @var    array
+	 * @since  2.0
+	 */
+
+	protected $deleteFolders = array(
+		'/media/{{name}}',
+	);
+
 	public function preflight($type, $parent)
 	{
 		$manifest = @$parent->getManifest();
@@ -72,5 +92,24 @@ class plgSystemVenoboxGhsvsInstallerScript extends InstallerScript
 		}
 
 		return true;
+	}
+
+	/**
+	 * Runs right after any installation action is preformed on the component.
+	 *
+	 * @param  string    $type   - Type of PostFlight action. Possible values are:
+	 *                           - * install
+	 *                           - * update
+	 *                           - * discover_install
+	 * @param  \stdClass $parent - Parent object calling object.
+	 *
+	 * @return void
+	 */
+	function postflight($type, $parent)
+	{
+		if ($type === 'update')
+		{
+			$this->removeFiles();
+		}
 	}
 }
