@@ -41,14 +41,16 @@ abstract class JHtmlPlgvenoboxghsvs
 		{
 			if (!($options['selector'] = $selector))
 			{
-				$options['selector'] = VenoboxGhsvsHelper::getPluginParams(
+				$selector = VenoboxGhsvsHelper::getPluginParams(
 					['system', 'venoboxghsvs']
-				)->get('selector', '') ?: '.venobox';
+				)->get('selector', '');
+				$selector = trim($selector);
+				$options['selector'] = $selector ?: '.venobox';
 			}
 		}
 		// END B\C shit.
 
-		$sig = md5($selector);
+		$sig = $options['selector'];
 
 		if (isset(static::$loaded[__METHOD__][$sig]))
 		{
@@ -80,12 +82,12 @@ abstract class JHtmlPlgvenoboxghsvs
 			VenoboxGhsvsHelper::prepareDefaultOptions($sig),
 			$options
 		);
-			$ready_or_load = $options['ready_or_load'] === 'ready'
-				? 'jQuery(document).ready(' : 'jQuery(window).on("load",';
-			$js = $ready_or_load . 'function(){jQuery("' . $options['selector'] . '").venobox('
-				. json_encode($options) . ');});';
+		$ready_or_load = $options['ready_or_load'] === 'ready'
+			? 'jQuery(document).ready(' : 'jQuery(window).on("load",';
+		$js = $ready_or_load . 'function(){jQuery("' . $options['selector'] . '").venobox('
+			. json_encode($options) . ');});';
 
-			Factory::getDocument()->addScriptDeclaration($js);
-			static::$loaded[__METHOD__][$sig] = 1;
+		Factory::getDocument()->addScriptDeclaration($js);
+		static::$loaded[__METHOD__][$sig] = 1;
 	}
 }
