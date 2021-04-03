@@ -312,8 +312,9 @@
 // GHSVS. Replace jquery animate.
 overlay.addClass('overlayShown');
 /// TEST. content ist .vbox-content
-//content.addClass('nureintest');
+content.addClass('contentHidden');
 //console.log(overlay);
+checknav();
                     // fade in overlay
                     //overlay.animate({opacity:1}, 250, function(){
 
@@ -428,9 +429,9 @@ overlay.addClass('overlayShown');
 
                      if (noArrows == true) {
                       $('.vbox-prev, .vbox-next ').css('display', 'none');
-                      prevok = false; 
+                      prevok = false;
                     }
-                    
+
                     // activate swipe
                     if (prevok === true || nextok === true) {
                       content.on(TouchMouseEvent.DOWN, onDownEvent);
