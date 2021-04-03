@@ -55,20 +55,31 @@
 			<fieldset name="configuration"
 				label="PLG_SYSTEM_VENOBOXGHSVS_FIELDSET_CONFIGURATION">
 
+				<field type="note" name="selectorSpacer"
+					class="alertsss alert-info"
+					label="PLG_SYSTEM_VENOBOXGHSVS_SELECTOR"
+					description="PLG_SYSTEM_VENOBOXGHSVS_SELECTOR_DESC" />
+
 				<field name="selector" type="text" default="" filter="string"
 					class="extended-width"
 					label="PLG_SYSTEM_VENOBOXGHSVS_SELECTOR" />
 
-				<field type="note" name="selectorSpacer"
-					class="alert alert-info"
-					label="PLG_SYSTEM_VENOBOXGHSVS_SELECTOR_DESC" />
+				<field type="note" name="jquerySlimSpacer"
+					class="alertsss alert-info"
+					label="Load jquerySlim version (EXPERIMENTAL!)"
+					description="PLG_SYSTEM_VENOBOXGHSVS_JQUERYSLIM_DESC"
+					/>
 
-				<field type="spacer" name="configurationSpacer2"
-					label="Optional(!) custom configuration" />
+				<field name="jquerySlim" type="list" default="" filter="string"
+					label="Load jquerySlim version (EXPERIMENTAL!)">
+						<option value="">JNO</option>
+						<option value="-jquery-slim">JYES</option>
+				</field>
 
 				<field type="note" name="configurationSpacer"
-					class="alertsss alert-infossss"
-					label="PLG_SYSTEM_VENOBOXGHSVS_FIELDSET_CONFIGURATION_DESC" />
+					class="alertsss alert-info"
+					label="Optional(!) custom configuration below"
+					description="PLG_SYSTEM_VENOBOXGHSVS_FIELDSET_CONFIGURATION_DESC" />
 
 				<field name="configs" type="subform" min="0" max="30"
 					multiple="true"

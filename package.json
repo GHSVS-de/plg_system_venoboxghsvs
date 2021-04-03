@@ -1,7 +1,7 @@
 {
 	"name": "plg_system_venoboxghsvs",
 	"filename": "venoboxghsvs",
-	"version": "2021.02.31",
+	"version": "2021.04.03",
 	"minimumPhp": "7.0.0",
 	"maximumPhp": "",
 	"minimumJoomla": "3.9.0",
@@ -45,13 +45,13 @@
 		"g-ncu-override-json": "ncu -u"
 	},
 	"dependencies": {
-		"npm-check-updates": "^11.1.9",
-		"venobox": "^1.9.2"
+		"npm-check-updates": "^11.3.0",
+		"venobox": "^1.9.3"
 	},
 	"devDependencies": {
-		"adm-zip": "0.5.3",
+		"adm-zip": "0.5.5",
 		"chalk": "^4.1.0",
-		"commander": "^7.1.0",
+		"commander": "^7.2.0",
 		"fs-extra": "9.1.0",
 		"path": "^0.12.7",
 		"recursive-readdir": "^2.2.2",

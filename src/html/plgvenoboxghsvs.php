@@ -24,6 +24,7 @@ abstract class JHtmlPlgvenoboxghsvs
 		// START B\C shit. $selector is deprecated.
 		$argList = func_get_args();
 
+		// B\C.
 		if (count($argList) > 0)
 		{
 			if (is_array($argList[0]))
@@ -37,13 +38,14 @@ abstract class JHtmlPlgvenoboxghsvs
 			}
 		}
 
+		$pluginParams = VenoboxGhsvsHelper::getPluginParams(
+			['system', 'venoboxghsvs']);
+
 		if (!isset($options['selector']))
 		{
 			if (!($options['selector'] = $selector))
 			{
-				$selector = VenoboxGhsvsHelper::getPluginParams(
-					['system', 'venoboxghsvs']
-				)->get('selector', '');
+				$selector = $pluginParams->get('selector', '');
 				$selector = trim($selector);
 				$options['selector'] = $selector ?: '.venobox';
 			}
@@ -60,17 +62,28 @@ abstract class JHtmlPlgvenoboxghsvs
 		if (!isset(static::$loaded[__METHOD__]['core']))
 		{
 			$attribs = array();
+			$postFix = $pluginParams->get('jquerySlim', '');
 			$min = JDEBUG ? '' : '.min';
 			$version = JDEBUG ? time() : 'auto';
-
 			HTMLHelper::_('jquery.framework');
+
 			HTMLHelper::_('stylesheet',
 				static::$basepath . '/' . 'venobox' . $min . '.css',
 				array('version' => $version, 'relative' => true),
 				$attribs
 			);
+
+			// e.g. compiled from SCSS
+			$customCSSPath = 'templates/'
+				. Factory::getApplication()->getTemplate()
+				. '/css/venobox' . $min . '.css';
+			HTMLHelper::_('stylesheet',
+				$customCSSPath,
+				array('version' => $version),
+				$attribs
+			);
 			HTMLHelper::_('script',
-				static::$basepath . '/' . 'venobox' . $min . '.js',
+				static::$basepath . '/' . 'venobox' . $postFix . $min . '.js',
 				array('version' => $version, 'relative' => true),
 				$attribs
 			);
