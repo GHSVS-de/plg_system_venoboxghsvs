@@ -45,13 +45,13 @@
 		"g-ncu-override-json": "ncu -u"
 	},
 	"dependencies": {
-		"npm-check-updates": "^11.8.1",
+		"npm-check-updates": "^11.8.5",
 		"venobox": "^1.9.3"
 	},
 	"devDependencies": {
 		"adm-zip": "^0.5.5",
-		"chalk": "^4.1.1",
-		"commander": "^8.0.0",
+		"chalk": "^4.1.2",
+		"commander": "^8.2.0",
 		"fs-extra": "10.0.0",
 		"path": "^0.12.7",
 		"recursive-readdir": "^2.2.2",
