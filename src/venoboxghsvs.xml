@@ -28,10 +28,8 @@
 		<filename plugin="{{filename}}">{{filename}}.php</filename>
 		<filename>LICENSE.txt</filename>
 		<filename>installerScript.php</filename>
-		<folder>fields</folder>
 		<folder>src</folder>
 		<folder>language</folder>
-		<folder>myforms</folder>
 	</files>
 
 	<media destination="{{name}}" folder="media">
