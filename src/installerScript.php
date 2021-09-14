@@ -44,7 +44,10 @@ class plgSystemVenoboxGhsvsInstallerScript extends InstallerScript
 	protected $deleteFolders = [
 		'/media/{{name}}',
 		'/media/plg_system_venoboxghsvs/_venobox-version',
-		'plugins/system/venoboxghsvs/myforms'
+		'plugins/system/venoboxghsvs/myforms',
+		'plugins/system/venoboxghsvs/Helper',
+		'plugins/system/venoboxghsvs/fields',
+		'plugins/system/venoboxghsvs/html',
 	];
 
 	public function preflight($type, $parent)
