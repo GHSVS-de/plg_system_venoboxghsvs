@@ -29,8 +29,7 @@
 		<filename>LICENSE.txt</filename>
 		<filename>installerScript.php</filename>
 		<folder>fields</folder>
-		<folder>Helper</folder>
-		<folder>html</folder>
+		<folder>src</folder>
 		<folder>language</folder>
 		<folder>myforms</folder>
 	</files>
@@ -45,7 +44,7 @@
 	<namespace path="src">Joomla\Plugin\System\VenoboxGhsvs</namespace>
 
 	<config>
-		<fields name="params" addfieldpath="plugins/system/{{filename}}/fields">
+		<fields name="params" addfieldpath="plugins/system/{{filename}}/src/Field">
 
 			<fieldset name="basic">
 				<field name="backendAssets" type="plgsystemvenoboxghsvs.assetsbe"
@@ -85,7 +84,7 @@
 					multiple="true"
 					label="" description=""
 					hiddenLabel="true"
-					formsource="plugins/system/venoboxghsvs/myforms/subform.xml"
+					formsource="plugins/system/venoboxghsvs/src/Form/subform.xml"
 					layout="joomla.form.field.subform.repeatable-table" groupByFieldset="false"
 					default='{"configs0":{"active":0,"parameter":"titleattr","value":"data-title"},"configs1":{"active":0,"parameter":"titleBackground","value":"#fff"},"configs2":{"active":0,"parameter":"titleColor","value":"#000"},"configs3":{"active":0,"parameter":"closeBackground","value":"#fff"},"configs4":{"active":0,"parameter":"titlePosition","value":"top"},"configs5":{"active":0,"parameter":"closeColor","value":"#f00"},"configs6":{"active":0,"parameter":"ready_or_load","value":"load"},"configs7":{"active":0,"parameter":"arrowsColor","value":"#fff"}}'
 				/>
