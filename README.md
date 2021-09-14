@@ -75,19 +75,21 @@ JHtml::_('plgvenoboxghsvs.venobox'
 </a>
 ```
 
-## Build
-- `cd /mnt/z/git-kram/plg_system_venoboxghsvs/`
-- Adapt file `package.json` (version etc.).
-- Base/source files are in folder `/src/`.
-- Check for updates: `ncu`.
-- `npm install`
+# My personal build procedure (WSL 1, Debian, Win 10)
+- Prepare/adapt `./package.json`.
+- `cd /mnt/z/git-kram/plg_system_venoboxghsvs`
+
+## node/npm updates/installation
+- `npm run g-npm-update-check` or (faster) `ncu`
+- `npm run g-ncu-override-json` (if needed) or (faster) `ncu -u`
+- `npm install` (if needed)
+
+## Build installable ZIP package
 - `node build.js`
+- New, installable ZIP is in `./dist` afterwards.
+- All packed files for this ZIP can be seen in `./package`. **But only if you disable deletion of this folder at the end of `build.js`**.
 
-- External libraries like `venobox` are copied to `/src/` now (old files overriden!).
-- Files are copied to folder `/package/` afterwards and manifest XML file adapted automatically = Base for ZIP file.
-- New ZIP in folder `/dist/` afterwards.
-- Only tested with WSL 1/Debian on WIndows 10.
-
-### New release/update for Joomla
-- Create new GitHub release/tag.
-- You can add extension ZIP file to "Assets" list via Drag&Drop. See "Attach binaries by dropping them here or selecting them.".
+### For Joomla update and changelog server
+- Create new release with new tag.
+- - See and copy and complete release description in `dist/release.txt`.
+- Extracts(!) of the update and changelog XML for update and changelog servers are in `./dist` as well. Copy/paste and make necessary additions.
