@@ -14,7 +14,7 @@ class PlgSystemvenoboxGhsvs extends CMSPlugin
 
 		if (!$this->app->isClient('administrator'))
 		{
-			HTMLHelper::addIncludePath(__DIR__ . '/html');
+			HTMLHelper::addIncludePath(__DIR__ . '/src/Html');
 		}
 	}
 }
