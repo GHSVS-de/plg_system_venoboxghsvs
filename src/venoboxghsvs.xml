@@ -1,23 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<extension version="3.9" type="plugin" group="system" method="upgrade">
+<extension type="{{type}}" client="{{client}}" group="{{folder}}" method="upgrade">
 	<name>{{nameUpper}}</name>
 	<author>{{authorName}}</author>
 	<creationDate>{{creationDate}}</creationDate>
 	<copyright>{{copyright}}</copyright>
 	<license>{{licenseLong}}</license>
-	<authorEmail></authorEmail>
 	<authorUrl>{{authorUrl}}</authorUrl>
 	<version>{{version}}</version>
-	<venoboxVersion>{{venoboxVersion}}</venoboxVersion>
 	<description>{{nameUpper}}_XML_DESCRIPTION</description>
 
 	<updateservers>
-		<server type="extension" priority="1" name="{{nameUpper}}">https://raw.githubusercontent.com/GHSVS-de/upadateservers/master/venoboxghsvs-update.xml</server>
+		<server type="extension" priority="1" name="{{nameUpper}}">https://raw.githubusercontent.com/GHSVS-de/upadateservers/master/{{filename}}-update.xml</server>
 	</updateservers>
 
-	<changelogurl>https://raw.githubusercontent.com/GHSVS-de/upadateservers/master/venoboxghsvs-changelog.xml</changelogurl>
+	<changelogurl>https://raw.githubusercontent.com/GHSVS-de/upadateservers/master/{{filename}}-changelog.xml</changelogurl>
 
-	<infourl>https://updates.ghsvs.de/changelog.php?file=venoboxghsvs</infourl>
+	<infourl>https://updates.ghsvs.de/changelog.php?file={{filename}}</infourl>
 
 	<scriptfile>installerScript.php</scriptfile>
 	<minimumPhp>{{minimumPhp}}</minimumPhp>
@@ -44,8 +42,10 @@
 		<filename>LICENSE_venobox.txt</filename>
 	</media>
 
+	<namespace path="src">Joomla\Plugin\System\VenoboxGhsvs</namespace>
+
 	<config>
-		<fields name="params" addfieldpath="plugins/system/venoboxghsvs/fields">
+		<fields name="params" addfieldpath="plugins/system/{{filename}}/fields">
 
 			<fieldset name="basic">
 				<field name="backendAssets" type="plgsystemvenoboxghsvs.assetsbe"
