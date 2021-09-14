@@ -10,7 +10,7 @@ if (version_compare(JVERSION, '4', 'lt'))
 {
   JLoader::registerNamespace(
     'Joomla\Plugin\System\VenoboxGhsvs',
-    __DIR__ . '/src',
+    dirname(__DIR__),
     false, false, 'psr4'
   );
 }
