@@ -6,6 +6,17 @@ HTMLHelper::_('plgvenoboxghsvs.venobox', [optional options]);
 
 defined('JPATH_BASE') or die;
 
+if (version_compare(JVERSION, '4', 'lt'))
+{
+  JLoader::registerNamespace(
+    'Joomla\Plugin\System\VenoboxGhsvs',
+    __DIR__ . '/src',
+    false, false, 'psr4'
+  );
+}
+
+use Joomla\Plugin\System\VenoboxGhsvs\Helper\VenoboxGhsvsHelper;
+
 use Joomla\CMS\Factory;
 use Joomla\CMS\HTML\HTMLHelper;
 
@@ -18,9 +29,6 @@ abstract class JHtmlPlgvenoboxghsvs
 
 	public static function venobox($selector = null, $options = [])
 	{
-		JLoader::register('VenoboxGhsvsHelper',
-			JPATH_PLUGINS . '/system/venoboxghsvs/Helper/VenoboxGhsvsHelper.php');
-
 		// START B\C shit. $selector is deprecated.
 		$argList = func_get_args();
 
