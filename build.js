@@ -1,89 +1,149 @@
-const Fs = require('fs-extra');
-const util = require("util");
-const rimRaf = util.promisify(require("rimraf"));
+const fse = require('fs-extra');
 const chalk = require('chalk');
-
-const Manifest = "./package/venoboxghsvs.xml";
+const path = require("path");
+const replaceXml = require('./build/replaceXml.js');
+const helper = require('./build/helper.js');
 
 const {
-	author,
-	creationDate,
-	copyright,
-	filename,
 	name,
+	filename,
 	version,
-	licenseLong,
-	minimumPhp,
-	maximumPhp,
-	minimumJoomla,
-	maximumJoomla,
-	allowDowngrades,
 } = require("./package.json");
+
+const manifestFileName = `${filename}.xml`;
+const Manifest = `${__dirname}/package/${manifestFileName}`;
+const source = `${__dirname}/node_modules/venobox`;
+const target = `./media`;
+let versionSub = '';
 
 (async function exec()
 {
-	// Remove old folders.
-  await rimRaf("./dist");
-  await rimRaf("./package");
+	let cleanOuts = [
+		`./package`,
+		`./dist`,
+		`${target}/_venobox-version`
+	];
+	await helper.cleanOut(cleanOuts);
 
-	const source = `${__dirname}/node_modules/venobox`;
-	const target = `${__dirname}/src/media`;
-	await rimRaf(`${target}/_venobox-version`);
-  await Fs.copy(
-		`${source}/venobox/venobox.js`,
+	versionSub = await helper.findVersionSub (
+		path.join(source, `package.json`),
+		'Venobox');
+
+	console.log(chalk.magentaBright(`versionSub identified as: "${versionSub}"`));
+
+	await fse.copy(`${source}/venobox/venobox.js`,
 		`${target}/js/venobox/venobox.js`
+	).then(
+		answer => console.log(chalk.yellowBright(
+			`Copied unminified "venobox.js" into "${target}".`))
 	);
-  await Fs.copy(
-		`${source}/venobox/venobox.min.js`,
+
+	await fse.copy(`${source}/venobox/venobox.min.js`,
 		`${target}/js/venobox/venobox.min.js`
+	).then(
+		answer => console.log(chalk.yellowBright(
+			`Copied minified "venobox.min.js" into "${target}".`))
 	);
-  await Fs.copy(
-		`${source}/venobox/venobox.css`,
+
+	await fse.copy(`${source}/venobox/venobox.css`,
 		`${target}/css/venobox/venobox.css`
+	).then(
+		answer => console.log(chalk.yellowBright(
+			`Copied unminified "venobox.css" into "${target}".`))
 	);
-  await Fs.copy(
-		`${source}/venobox/venobox.min.css`,
+
+	await fse.copy(`${source}/venobox/venobox.min.css`,
 		`${target}/css/venobox/venobox.min.css`
+	).then(
+		answer => console.log(chalk.yellowBright(
+			`Copied minified "venobox.min.js" into "${target}".`))
 	);
-  await Fs.copy(
-		`${source}/LICENSE`,
+
+	await fse.copy(`${source}/LICENSE`,
 		`${target}/LICENSE_venobox.txt`
-	);
-	await Fs.mkdir(`${target}/_venobox-version`);
-	const sourceInfos = JSON.parse(Fs.readFileSync(`${source}/package.json`).toString());
-	Fs.writeFileSync(
-		`${target}/_venobox-version/version.txt`, sourceInfos.version, { encoding: "utf8" }
+	).then(
+		answer => console.log(chalk.yellowBright(
+			`Copied Venobox "LICENSE" to "${target}/LICENSE_venobox.txt".`))
 	);
 
-	// Copy and create new work dir.
-  await Fs.copy("./src", "./package");
-	await Fs.mkdir("./dist");
-
-  let xml = await Fs.readFile(Manifest, { encoding: "utf8" });
-	xml = xml.replace(/{{name}}/g, name);
-	xml = xml.replace(/{{nameUpper}}/g, name.toUpperCase());
-	xml = xml.replace(/{{authorName}}/g, author.name);
-	xml = xml.replace(/{{creationDate}}/g, creationDate);
-	xml = xml.replace(/{{copyright}}/g, copyright);
-	xml = xml.replace(/{{licenseLong}}/g, licenseLong);
-	xml = xml.replace(/{{authorUrl}}/g, author.url);
-	xml = xml.replace(/{{version}}/g, version);
-	xml = xml.replace(/{{minimumPhp}}/g, minimumPhp);
-	xml = xml.replace(/{{maximumPhp}}/g, maximumPhp);
-	xml = xml.replace(/{{minimumJoomla}}/g, minimumJoomla);
-	xml = xml.replace(/{{maximumJoomla}}/g, maximumJoomla);
-	xml = xml.replace(/{{allowDowngrades}}/g, allowDowngrades);
-	xml = xml.replace(/{{filename}}/g, filename);
-	xml = xml.replace(/{{venoboxVersion}}/g, sourceInfos.version);
-
-  await Fs.writeFile(Manifest, xml, { encoding: "utf8" }).then(
-		answer => console.log(`Replaced entries in ${Manifest}.`)
+	await fse.copy("./src", "./package"
+	).then(
+		answer => console.log(chalk.yellowBright(`Copied "./src" to "./package".`))
 	);
 
-  // Package it
-  const zip = new (require("adm-zip"))();
-	const zipFilePath = `dist/${name}-${version}_${sourceInfos.version}.zip`;
-  zip.addLocalFolder("package", false);
-  zip.writeZip(`${zipFilePath}`);
-	console.log(chalk.green(`${zipFilePath} written.`));
+	await fse.copy("./media", "./package/media"
+	).then(
+		answer => console.log(chalk.yellowBright(`Copied "./media" to "./package".`))
+	);
+
+	if (!(await fse.exists("./dist")))
+	{
+    	await fse.mkdir("./dist"
+		).then(
+			answer => console.log(chalk.yellowBright(`Created "./dist".`))
+		);
+  }
+
+	const zipFilename = `${name}-${version}_${versionSub}.zip`;
+
+	await replaceXml.main(Manifest, zipFilename);
+	await fse.copy(`${Manifest}`, `./dist/${manifestFileName}`).then(
+		answer => console.log(chalk.yellowBright(
+			`Copied "${manifestFileName}" to "./dist".`))
+	);
+
+
+	// Create zip file and detect checksum then.
+	const zipFilePath = `./dist/${zipFilename}`;
+
+	const zip = new (require('adm-zip'))();
+	zip.addLocalFolder("package", false);
+	await zip.writeZip(`${zipFilePath}`);
+	console.log(chalk.cyanBright(chalk.bgRed(
+		`"./dist/${zipFilename}" written.`)));
+
+	const Digest = 'sha256'; //sha384, sha512
+	const checksum = await helper.getChecksum(zipFilePath, Digest)
+  .then(
+		hash => {
+			const tag = `<${Digest}>${hash}</${Digest}>`;
+			console.log(chalk.greenBright(`Checksum tag is: ${tag}`));
+			return tag;
+		}
+	)
+	.catch(error => {
+		console.log(error);
+		console.log(chalk.redBright(`Error while checksum creation. I won't set one!`));
+		return '';
+	});
+
+	let xmlFile = 'update.xml';
+	await fse.copy(`./${xmlFile}`, `./dist/${xmlFile}`).then(
+		answer => console.log(chalk.yellowBright(
+			`Copied "${xmlFile}" to ./dist.`))
+	);
+	await replaceXml.main(`${__dirname}/dist/${xmlFile}`, zipFilename, checksum);
+
+	xmlFile = 'changelog.xml';
+	await fse.copy(`./${xmlFile}`, `./dist/${xmlFile}`).then(
+		answer => console.log(chalk.yellowBright(
+			`Copied "${xmlFile}" to ./dist.`))
+	);
+	await replaceXml.main(`${__dirname}/dist/${xmlFile}`, zipFilename, checksum);
+
+	xmlFile = 'release.txt';
+	await fse.copy(`./${xmlFile}`, `./dist/${xmlFile}`).then(
+		answer => console.log(chalk.yellowBright(
+			`Copied "${xmlFile}" to ./dist.`))
+	);
+	await replaceXml.main(`${__dirname}/dist/${xmlFile}`, zipFilename, checksum);
+
+	cleanOuts = [
+		`./package`
+	];
+	await helper.cleanOut(cleanOuts).then(
+		answer => console.log(chalk.cyanBright(chalk.bgRed(
+			`Finished. Good bye!`)))
+	);
+
 })();
