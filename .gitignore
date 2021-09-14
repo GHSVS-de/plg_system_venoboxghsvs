@@ -1,12 +1,21 @@
-/node_modules/
-/package/
+node_modules/
 .DS_Store
 _notes/
 __done/
+package/
 log.txt
 prepros.config
 prepros-6.config
 *.zip
+__AUFPASSEN Neuer Updateserver/
+__AUFPASSEN Version seit 2020-03/
+__AUFPASSEN Neuer Updateserver bs3ghsvs2020/
+_______SCHAU-DIR-DAS-AN
 .vscode
 
 !/dist/**
+src/vendor/bin/pscss
+src/vendor/scssphp/scssphp/bin/pscss
+/dist/*.xml
+/dist/*.txt
+_composer/vendor
