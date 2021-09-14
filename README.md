@@ -76,6 +76,8 @@ JHtml::_('plgvenoboxghsvs.venobox'
 ```
 
 # My personal build procedure (WSL 1, Debian, Win 10)
+- - If new Venobox release out adapt your custom venobox-jquery-slim.js.
+
 - Prepare/adapt `./package.json`.
 - `cd /mnt/z/git-kram/plg_system_venoboxghsvs`
 
