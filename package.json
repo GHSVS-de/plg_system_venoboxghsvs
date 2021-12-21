@@ -2,17 +2,21 @@
 	"name": "plg_system_venoboxghsvs",
 	"nameReal": "plg_system_venoboxghsvs",
 	"filename": "venoboxghsvs",
-	"version": "2021.09.14",
-	"versionCompare": "2021.04.03",
+	"version": "2021.12.21",
+	"versionCompare": "2021.09.14",
 	"update": {
 		"type": "plugin",
 		"folder": "system",
 		"client": "site",
 		"tag": "stable",
-		"targetplatform": ".*"
+		"targetplatform": [
+			"3.*",
+			"4.*"
+		]
 	},
 	"releaseTxt": {
-		"title": "Joomla system plugin VenoboxGhsvs"
+		"title": "Joomla system plugin VenoboxGhsvs-v2plus",
+		"requires": []
 	},
 	"changelog": {
 		"projecturl": "https://github.com/GHSVS-de/plg_system_venoboxghsvs",
@@ -21,30 +25,30 @@
 		"docsDE": "https://ghsvs.de/programmierer-schnipsel/joomla/294-jhtml-htmlhelper-helper-fuer-venobox-in-joomla",
 		"docsEN": "",
 		"lastTests": [
-			"PHP 8",
+			"PHP 8.0",
 			"PHP 7.4",
-			"Joomla 3.10",
-			"Joomla 4.0"
+			"Joomla 3.10.4",
+			"Joomla 4.0.5"
 		]
 	},
-	"minimumPhp": "7.0.0",
+	"minimumPhp": "7.4.0",
 	"maximumPhp": "8.9999.9999",
-	"minimumJoomla": "3.9.0",
+	"minimumJoomla": "3.10.4",
 	"maximumJoomla": "4.9999.9999",
 	"allowDowngrades": "1",
-	"creationDate": "2020.08.09",
+	"creationDate": "2020-08-09",
 	"licenseLong": "GNU General Public License version 3 or later; see LICENSE.txt.",
 	"copyright": "(C) 2020, G@HService Berlin Neukölln, Volkmar Volli Schlothauer.",
 	"author": {
 		"name": "G@HService Berlin Neukölln, Volkmar Volli Schlothauer",
 		"email": "",
-		"url": "https://www.ghsvs.de"
+		"url": "https://ghsvs.de"
 	},
 	"contributors": [
 		{
 			"name": "G@HService Berlin Neukölln, Volkmar Volli Schlothauer",
 			"email": "",
-			"url": "https://www.ghsvs.de"
+			"url": "https://ghsvs.de"
 		}
 	],
 	"bugs": "https://github.com/GHSVS-de/plg_system_venoboxghsvs/issues",
@@ -52,7 +56,8 @@
 	"keywords": [
 		"joomla",
 		"system plugin",
-		"venobox"
+		"venobox",
+		"images"
 	],
 	"private": false,
 	"description": "Joomla system plugin. Integrate Venobox via JHtml/HtmlHelper in Joomla.",
@@ -67,12 +72,12 @@
 		"g-ncu-override-json": "ncu -u"
 	},
 	"dependencies": {
-		"npm-check-updates": "^11.8.5",
-		"venobox": "^1.9.3"
+		"npm-check-updates": "^12.0.5",
+		"venobox": "^2.0.4"
 	},
 	"devDependencies": {
-		"adm-zip": "^0.5.6",
-		"chalk": "^4.1.2",
+		"adm-zip": "^0.5.9",
+		"picocolors": "^1.0.0",
 		"fs-extra": "10.0.0",
 		"path": "^0.12.7",
 		"rimraf": "3.0.2"

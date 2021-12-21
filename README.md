@@ -1,4 +1,12 @@
-# plg_system_venoboxghsvs for Joomla
+# plg_system_venoboxghsvs-v2plus aka plg_system_venoboxghsvs for Joomla
+
+# This README is not up-to-date!
+- I haven't had time to look through this readme yet.
+- Since Venoobox 2 JQuery is not required anymore.
+- See https://veno.es/venobox
+
+------
+# Old old old
 
 - Uses VenoBox library (https://github.com/nicolafranchini/VenoBox)
 - Integrates a Venobox JHtml helper.
