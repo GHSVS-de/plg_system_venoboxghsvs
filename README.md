@@ -1,9 +1,10 @@
 # plg_system_venoboxghsvs-v2plus aka plg_system_venoboxghsvs for Joomla
 
 # This README is not up-to-date!
-- I haven't had time to look through this readme yet.
-- Since Venoobox 2 JQuery is not required anymore.
-- See https://veno.es/venobox
+- I haven't had time to look through this README yet.
+- Since Venoobox 2.x JQuery is not required anymore.
+- On the other hand, configuration settings in the Venobox have changed. You can update from older versions of my plugin (with Venobox v1.x), but you should know that my plugin does not catch outdated configuration parameters. They are going nowhere.
+- See new options on https://veno.es/venobox
 
 ------
 # Old old old
