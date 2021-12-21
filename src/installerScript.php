@@ -6,7 +6,7 @@
  * @copyright Copyright (C) 2016-2019, G@HService Berlin Neukölln, Volkmar Volli Schlothauer. All rights reserved.
  * @license GNU General Public License version 3 or later; see LICENSE.txt; see also LICENSE_Hyphenator.txt; see also LICENSE_Hyphenopoly.txt
  * @authorUrl https://www.ghsvs.de
- * @link https://github.com/GHSVS-de/plg_system_venoboxghsvs
+ * @link https://github.com/GHSVS-de/plg_system_venoboxghsvs-v2plus
  */
 /**
  * Use in your extension manifest file (any tag is optional!!!!!):
@@ -22,6 +22,7 @@ defined('_JEXEC') or die;
 
 use Joomla\CMS\Installer\InstallerScript;
 use Joomla\CMS\Log\Log;
+use Joomla\CMS\Factory;
 
 class plgSystemVenoboxGhsvsInstallerScript extends InstallerScript
 {
@@ -31,8 +32,10 @@ class plgSystemVenoboxGhsvsInstallerScript extends InstallerScript
 	 * @var    array
 	 * @since  2.0
 	 */
-	protected $deleteFiles = array(
-	);
+	protected $deleteFiles = [
+		'/media/plg_system_venoboxghsvs/js/venobox/venobox-jquery-slim.js',
+		'/media/plg_system_venoboxghsvs/js/venobox/venobox-jquery-slim.min.js',
+	];
 
 	/**
 	 * A list of folders to be deleted with method removeFiles().
@@ -99,6 +102,11 @@ class plgSystemVenoboxGhsvsInstallerScript extends InstallerScript
 			return false;
 		}
 
+		if ($type === 'update')
+		{
+			$this->removeOldUpdateservers();
+		}
+
 		return true;
 	}
 
@@ -120,4 +128,56 @@ class plgSystemVenoboxGhsvsInstallerScript extends InstallerScript
 			$this->removeFiles();
 		}
 	}
+
+	/**
+	* Remove the outdated updateservers.
+	*
+	* @return  void
+	*
+	* @since   version after 2021.12.21
+	*/
+	protected function removeOldUpdateservers()
+	{
+		$db = Factory::getDbo();
+
+		try
+		{
+			$query = $db->getQuery(true);
+
+			$query->select('update_site_id')
+				->from($db->qn('#__update_sites'))
+				/* ->where($db->qn('location') . ' = '
+				. $db->q('https://raw.githubusercontent.com/GHSVS-de/upadateservers/master/bs3ghsvs2020-update.xml'), 'OR') */
+				->where($db->qn('location') . ' = '
+				. $db->q('https://raw.githubusercontent.com/GHSVS-de/upadateservers/master/venoboxghsvs-update.xml'));
+
+			$ids = $db->setQuery($query)->loadAssocList('update_site_id');
+
+			if (!$ids)
+			{
+				return;
+			}
+
+			$ids = \array_keys($ids);
+			$ids =\implode(',', $ids);
+
+			// Delete from update sites
+			$db->setQuery(
+				$db->getQuery(true)
+					->delete($db->qn('#__update_sites'))
+					->where($db->qn('update_site_id') . ' IN (' . $ids . ')')
+			)->execute();
+
+			// Delete from update sites extensions
+			$db->setQuery(
+				$db->getQuery(true)
+				->delete($db->qn('#__update_sites_extensions'))
+				->where($db->qn('update_site_id') . ' IN (' . $ids . ')')
+			)->execute();
+		}
+		catch (Exception $e)
+		{
+			return;
+		}
+ 	}
 }

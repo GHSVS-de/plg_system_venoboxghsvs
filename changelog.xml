@@ -41,6 +41,10 @@
 
 		<note>
 			<item><![CDATA[
+				Joomla-Target-Platform: {{targetplatform}}
+			]]></item>
+
+			<item><![CDATA[
 				Last tests: {{lastTests}}
 			]]></item>
 
@@ -51,7 +55,7 @@
 			]]></item>
 
 			<item><![CDATA[
-				<a href="https://updates.ghsvs.de/changelog.php?file={{filename}}">
+				<a href="https://updates.ghsvs.de/changelog.php?file={{name}}">
 					All changelogs
 				</a>
 			]]></item>
@@ -72,6 +76,10 @@
 		</remove>
 
 		<requirement>
+			<entry><![CDATA[
+				Requires: {{requires}}
+			]]></entry>
+
 			<entry><![CDATA[
 				minimumPhp: {{minimumPhp}}
 			]]></entry>

@@ -112,11 +112,6 @@ abstract class VenoboxGhsvsHelper
 				}
 			}
 
-			if (!isset($options_default['ready_or_load']))
-			{
-				$options_default['ready_or_load'] = 'ready';
-			}
-
 			static::$loaded[__METHOD__][$sig] = $options_default;
 		}
 

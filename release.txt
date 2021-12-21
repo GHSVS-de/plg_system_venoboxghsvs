@@ -7,8 +7,12 @@ Checksum entities: `{{checksumEntity}}`
 - {{description}}
 - [Download {{zipFilename}}](https://github.com/GHSVS-de/{{name}}/raw/{{version}}/dist/{{zipFilename}})
 - [Compare releases {{versionCompare}}...{{version}}](https://github.com/GHSVS-de/{{name}}/compare/{{versionCompare}}...{{version}})
-- [Changelogs](https://updates.ghsvs.de/changelog.php?file={{filename}})
+- [Changelogs](https://updates.ghsvs.de/changelog.php?file={{name}})
 - Checksum: `{{checksum}}`
-- Changelogs XML: https://raw.githubusercontent.com/GHSVS-de/upadateservers/master/{{filename}}-changelog.xml
-- Updates XML: https://raw.githubusercontent.com/GHSVS-de/upadateservers/master/{{filename}}-update.xml
+- Changelogs XML: https://raw.githubusercontent.com/GHSVS-de/upadateservers/master/{{name}}-changelog.xml
+- Updates XML: https://raw.githubusercontent.com/GHSVS-de/upadateservers/master/{{name}}-update.xml
+- [Changelog of nicolafranchini/VenoBox](https://github.com/nicolafranchini/VenoBox/blob/master/CHANGELOG.md)
+- [Documentation for VenoBox 2 on veno.es](https://veno.es/venobox/)
 - Last tests: {{lastTests}}
+- Joomla-Target-Platform: {{targetplatform}}
+- Requires: {{requires}}

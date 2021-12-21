@@ -10,12 +10,12 @@
 	<description>{{nameUpper}}_XML_DESCRIPTION</description>
 
 	<updateservers>
-		<server type="extension" priority="1" name="{{nameUpper}}">https://raw.githubusercontent.com/GHSVS-de/upadateservers/master/{{filename}}-update.xml</server>
+		<server type="extension" priority="1" name="{{nameUpper}}">https://raw.githubusercontent.com/GHSVS-de/upadateservers/master/{{name}}-update.xml</server>
 	</updateservers>
 
-	<changelogurl>https://raw.githubusercontent.com/GHSVS-de/upadateservers/master/{{filename}}-changelog.xml</changelogurl>
+	<changelogurl>https://raw.githubusercontent.com/GHSVS-de/upadateservers/master/{{name}}-changelog.xml</changelogurl>
 
-	<infourl>https://updates.ghsvs.de/changelog.php?file={{filename}}</infourl>
+	<infourl>https://updates.ghsvs.de/changelog.php?file={{name}}</infourl>
 
 	<scriptfile>installerScript.php</scriptfile>
 	<minimumPhp>{{minimumPhp}}</minimumPhp>
@@ -62,15 +62,9 @@
 
 				<field type="note" name="jquerySlimSpacer"
 					class="alertsss alert-info"
-					label="Load jquerySlim version (EXPERIMENTAL!)"
+					label="Load jquerySlim version"
 					description="PLG_SYSTEM_VENOBOXGHSVS_JQUERYSLIM_DESC"
 					/>
-
-				<field name="jquerySlim" type="list" default="" filter="string"
-					label="Load jquerySlim version (EXPERIMENTAL!)">
-						<option value="">JNO</option>
-						<option value="-jquery-slim">JYES</option>
-				</field>
 
 				<field type="note" name="configurationSpacer"
 					class="alertsss alert-info"
@@ -83,7 +77,7 @@
 					hiddenLabel="true"
 					formsource="plugins/system/venoboxghsvs/src/Form/subform.xml"
 					layout="joomla.form.field.subform.repeatable-table" groupByFieldset="false"
-					default='{"configs0":{"active":0,"parameter":"titleattr","value":"data-title"},"configs1":{"active":0,"parameter":"titleBackground","value":"#fff"},"configs2":{"active":0,"parameter":"titleColor","value":"#000"},"configs3":{"active":0,"parameter":"closeBackground","value":"#fff"},"configs4":{"active":0,"parameter":"titlePosition","value":"top"},"configs5":{"active":0,"parameter":"closeColor","value":"#f00"},"configs6":{"active":0,"parameter":"ready_or_load","value":"load"},"configs7":{"active":0,"parameter":"arrowsColor","value":"#fff"}}'
+					default='{"configs0":{"active":0,"parameter":"titleattr","value":"data-title"},"configs1":{"active":0,"parameter":"toolsBackground","value":"#fff"},"configs2":{"active":0,"parameter":"toolsColor","value":"#000"},"configs3":{"active":0,"parameter":"titlePosition","value":"bottom"}}'
 				/>
 			</fieldset>
 

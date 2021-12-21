@@ -22,7 +22,7 @@ use Joomla\CMS\HTML\HTMLHelper;
 
 abstract class JHtmlPlgvenoboxghsvs
 {
-	protected static $loaded = array();
+	protected static $loaded = [];
 
 	// media-Ordner:
 	protected static $basepath = 'plg_system_venoboxghsvs/venobox';
@@ -69,31 +69,26 @@ abstract class JHtmlPlgvenoboxghsvs
 
 		if (!isset(static::$loaded[__METHOD__]['core']))
 		{
-			$attribs = array();
-			$postFix = $pluginParams->get('jquerySlim', '');
 			$min = JDEBUG ? '' : '.min';
 			$version = JDEBUG ? time() : 'auto';
-			HTMLHelper::_('jquery.framework');
 
 			HTMLHelper::_('stylesheet',
 				static::$basepath . '/' . 'venobox' . $min . '.css',
-				array('version' => $version, 'relative' => true),
-				$attribs
+				['version' => $version, 'relative' => true]
 			);
 
 			// e.g. compiled from SCSS
 			$customCSSPath = 'templates/'
 				. Factory::getApplication()->getTemplate()
 				. '/css/venobox' . $min . '.css';
+
 			HTMLHelper::_('stylesheet',
 				$customCSSPath,
-				array('version' => $version),
-				$attribs
+				['version' => $version]
 			);
 			HTMLHelper::_('script',
-				static::$basepath . '/' . 'venobox' . $postFix . $min . '.js',
-				array('version' => $version, 'relative' => true),
-				$attribs
+				static::$basepath . '/' . 'venobox' . $min . '.js',
+				['version' => $version, 'relative' => true]
 			);
 
 			static::$loaded[__METHOD__]['core'] = 1;
@@ -103,10 +98,10 @@ abstract class JHtmlPlgvenoboxghsvs
 			VenoboxGhsvsHelper::prepareDefaultOptions($sig),
 			$options
 		);
-		$ready_or_load = $options['ready_or_load'] === 'ready'
-			? 'jQuery(document).ready(' : 'jQuery(window).on("load",';
-		$js = $ready_or_load . 'function(){jQuery("' . $options['selector'] . '").venobox('
-			. json_encode($options) . ');});';
+
+		$js = 'document.addEventListener("DOMContentLoaded", (event) => {';
+		$js .= 'new VenoBox(' . json_encode($options) . ')';
+		$js .= '});';
 
 		Factory::getDocument()->addScriptDeclaration($js);
 		static::$loaded[__METHOD__][$sig] = 1;

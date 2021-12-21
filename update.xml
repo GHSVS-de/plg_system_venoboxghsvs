@@ -1,4 +1,4 @@
-<!--{{nameUpper}} Version {{version}}-->
+<!--{{nameUpper}} Version {{version}} Target platform: {{targetplatform}}-->
 	<update>
 		<name>{{nameUpper}}</name>
 		<description>{{description}}</description>
@@ -7,9 +7,9 @@
 		<folder>{{folder}}</folder>
 		<client>{{client}}</client>
 		<version>{{version}}</version>
-		<infourl>https://updates.ghsvs.de/changelog.php?file={{filename}}&amp;version={{version}}</infourl>
+		<infourl>https://updates.ghsvs.de/changelog.php?file={{name}}&amp;version={{version}}</infourl>
 
-		<changelogurl>https://raw.githubusercontent.com/GHSVS-de/upadateservers/master/{{filename}}-changelog.xml</changelogurl>
+		<changelogurl>https://raw.githubusercontent.com/GHSVS-de/upadateservers/master/{{name}}-changelog.xml</changelogurl>
 
 		<downloads>
 			<downloadurl type="full" format="zip">https://github.com/GHSVS-de/{{name}}/raw/{{version}}/dist/{{zipFilename}}</downloadurl>
@@ -23,4 +23,4 @@
 		<php_minimum>{{php_minimum}}</php_minimum>
 		{{checksum}}
 	</update>
-<!--/{{nameUpper}} Version {{version}}-->
+<!--/{{nameUpper}} Version {{version}} Target platform: {{targetplatform}}-->
