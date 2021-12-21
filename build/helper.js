@@ -5,7 +5,7 @@
 const fse = require('fs-extra');
 const util = require("util");
 const rimRaf = util.promisify(require("rimraf"));
-const chalk = require('chalk');
+const pc = require('picocolors');
 const crypto = require('crypto');
 
 module.exports.cleanOut = async (cleanOuts) =>
@@ -13,7 +13,7 @@ module.exports.cleanOut = async (cleanOuts) =>
 	for (const file of cleanOuts)
 	{
 		await rimRaf(file).then(
-			answer => console.log(chalk.redBright(`rimRafed "${file}".`))
+			answer => console.log(pc.red(pc.bold(`rimRafed "${file}".`)))
 		).catch(error => console.error('Error ' + error));
 	}
 }
@@ -46,8 +46,8 @@ module.exports.getChecksum = async (path, Digest) =>
 
 module.exports.findVersionSub = async (packagesFile, packageName) =>
 {
-	console.log(chalk.magentaBright(
-	`Search versionSub of package "${packageName}" in "${packagesFile}".`));
+	console.log(pc.magenta(pc.bold(
+		`Search versionSub of package "${packageName}" in "${packagesFile}".`)));
 
 	return require(packagesFile).version;
 }
