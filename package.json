@@ -60,7 +60,7 @@
 		"images"
 	],
 	"private": false,
-	"description": "Joomla system plugin. Integrate Venobox via JHtml/HtmlHelper in Joomla.",
+	"description": "Joomla system plugin. Integrate Venobox v2+ via JHtml/HtmlHelper in Joomla.",
 	"license": "GPL-3.0",
 	"repository": {
 		"type": "git",
