@@ -3,11 +3,14 @@
 # This README is not up-to-date!
 - I haven't had time to look through this README yet.
 - Since Venoobox 2.x JQuery is not required anymore.
-- On the other hand, configuration settings in the Venobox have changed. You can update from older versions of my plugin (with Venobox v1.x), but you should know that my plugin does not catch outdated configuration parameters. They are going nowhere.
+- On the other hand, configuration settings in the Venobox have changed. You can update from older versions of my Joomla plugin (with Venobox v1.x), but you should know that my plugin does not catch outdated configuration parameters. They are going nowhere.
+- Furthermore, the JQuery-Slim feature has been removed without replacement in this Joomla plugin.This means that the associated CSS should also be removed if you used or created any.
 - See new options on https://veno.es/venobox
 
+- If you are looking for the old README for plugin versions with Venobox versions 1.x: https://github.com/GHSVS-de/plg_system_venoboxghsvs/tree/venobox-v1
+
 ------
-# Old old old
+# Old old old README
 
 - Uses VenoBox library (https://github.com/nicolafranchini/VenoBox)
 - Integrates a Venobox JHtml helper.
