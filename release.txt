@@ -4,7 +4,7 @@
 
 Checksum entities: `{{checksumEntity}}`
 
--
+- {{description}}
 - [Download {{zipFilename}}](https://github.com/GHSVS-de/{{name}}/raw/{{version}}/dist/{{zipFilename}})
 - [Compare releases {{versionCompare}}...{{version}}](https://github.com/GHSVS-de/{{name}}/compare/{{versionCompare}}...{{version}})
 - [Changelogs](https://updates.ghsvs.de/changelog.php?file={{filename}})

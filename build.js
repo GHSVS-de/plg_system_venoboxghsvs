@@ -78,7 +78,7 @@ let versionSub = '';
 
 	if (!(await fse.exists("./dist")))
 	{
-    	await fse.mkdir("./dist"
+		await fse.mkdir("./dist"
 		).then(
 			answer => console.log(chalk.yellowBright(`Created "./dist".`))
 		);
@@ -92,7 +92,6 @@ let versionSub = '';
 			`Copied "${manifestFileName}" to "./dist".`))
 	);
 
-
 	// Create zip file and detect checksum then.
 	const zipFilePath = `./dist/${zipFilename}`;
 
@@ -100,7 +99,7 @@ let versionSub = '';
 	zip.addLocalFolder("package", false);
 	await zip.writeZip(`${zipFilePath}`);
 	console.log(chalk.cyanBright(chalk.bgRed(
-		`"./dist/${zipFilename}" written.`)));
+		`./dist/${zipFilename} written.`)));
 
 	const Digest = 'sha256'; //sha384, sha512
 	const checksum = await helper.getChecksum(zipFilePath, Digest)

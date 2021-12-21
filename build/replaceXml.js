@@ -27,7 +27,7 @@ const {
 	bugs
 } = require("./../package.json");
 
-module.exports.main = async (xmlFile, zipFilename, checksum) =>
+module.exports.main = async (xmlFile, zipFilename, checksum, thisPackages) =>
 {
   try
   {
@@ -76,6 +76,11 @@ module.exports.main = async (xmlFile, zipFilename, checksum) =>
 		xml = xml.replace(/{{version}}/g, version);
 		xml = xml.replace(/{{versionCompare}}/g, versionCompare);
 		xml = xml.replace(/{{zipFilename}}/g, zipFilename);
+
+		if (thisPackages && thisPackages.length)
+		{
+			xml = xml.replace(/{{thisPackages}}/g, thisPackages.join("\n"));
+		}
 
 		await fse.writeFile(xmlFile, xml, { encoding: "utf8" }
 		).then(
