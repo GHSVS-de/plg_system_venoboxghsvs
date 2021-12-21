@@ -1,5 +1,7 @@
 # plg_system_venoboxghsvs for Joomla
 
+- In this branch `venobox-v1` you find the plugin with Venobox version < 2. It's JQuery dependant.
+
 - Uses VenoBox library (https://github.com/nicolafranchini/VenoBox)
 - Integrates a Venobox JHtml helper.
 - - Loads standard CSS and JS.
