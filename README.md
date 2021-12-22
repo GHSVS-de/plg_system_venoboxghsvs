@@ -5,7 +5,7 @@
 ## In advance
 - Since version 2021.12.21 this Joomla plugin uses Venobox version 2.x+ which doesn't require JQuery anymore.
 - Configuration settings in Venobox have changed. Some have been renamed. Some others were removed.
-- - - See possible options on https://veno.es/venobox
+- - See possible options on https://veno.es/venobox
 - I have removed all JQuery parts including the experimental JQuery-slim feature from the code of `plg_system_venoboxghsvs`.
 - - If you used the JQuery-Slim feature: This means that the associated CSS should also be removed if you used or created any.
 - You can update from earlier versions of my Joomla plugin (that used Venobox v1.x), but you should know that
