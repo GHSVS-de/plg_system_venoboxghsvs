@@ -1,16 +1,23 @@
 # plg_system_venoboxghsvs-v2plus aka plg_system_venoboxghsvs for Joomla
 
 # This README is not up-to-date!
-- I haven't had time to look through this README yet.
-- Since Venoobox 2.x JQuery is not required anymore.
-- On the other hand, configuration settings in the Venobox have changed. You can update from older versions of my Joomla plugin (with Venobox v1.x), but you should know that my plugin does not catch outdated configuration parameters. They are going nowhere.
-- Furthermore, the JQuery-Slim feature has been removed without replacement in this Joomla plugin.This means that the associated CSS should also be removed if you used or created any.
-- See new options on https://veno.es/venobox
+(I haven't had time to look through this README yet.)
 
+## In advance
+- Since version 2021.12.21 this Joomla plugin uses Venobox version 2.x+ which doesn't require JQuery anymore.
+- Configuration settings in Venobox have changed. Some have been renamed. Some others were removed.
+- - - See possible options on https://veno.es/venobox
+- I have removed all JQuery parts including the experimental JQuery-slim feature from the code of `plg_system_venoboxghsvs`.
+- - If you used the JQuery-Slim feature: This means that the associated CSS should also be removed if you used or created any.
+- You can update from earlier versions of my Joomla plugin (that used Venobox v1.x), but you should know that
+- - my plugin does not catch outdated 1.x configuration parameters. They are going nowhere.
+- - you don't get any automated update hint in Joomla backend for the step 1.x to 2.x. Simply install over it!
 - If you are looking for the old README for plugin versions with Venobox versions 1.x: https://github.com/GHSVS-de/plg_system_venoboxghsvs/tree/venobox-v1
+- - If you're searching for a version of this Joomla plugin that uses Venobox 1.x+: https://github.com/GHSVS-de/plg_system_venoboxghsvs/releases/tag/2021.09.14
+
 
 ------
-# Old old old README
+# Old old old README (For the most part still correct, but not yet revised in detail.)
 
 - Uses VenoBox library (https://github.com/nicolafranchini/VenoBox)
 - Integrates a Venobox JHtml helper.
