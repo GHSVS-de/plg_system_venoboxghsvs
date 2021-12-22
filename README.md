@@ -1,7 +1,6 @@
 # plg_system_venoboxghsvs-v2plus aka plg_system_venoboxghsvs for Joomla
 
-# This README is not up-to-date!
-(I haven't had time to look through this README yet.)
+# This README is not up-to-date in detail!
 
 ## In advance
 - Since version 2021.12.21 this Joomla plugin uses Venobox version 2.x+ which doesn't require JQuery anymore.
