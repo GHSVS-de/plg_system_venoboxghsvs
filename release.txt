@@ -14,5 +14,5 @@ Checksum entities: `{{checksumEntity}}`
 - [Changelog of nicolafranchini/VenoBox](https://github.com/nicolafranchini/VenoBox/blob/master/CHANGELOG.md)
 - [Documentation for VenoBox 2 on veno.es](https://veno.es/venobox/)
 - Last tests: {{lastTests}}
-- Joomla-Target-Platform: {{targetplatform}}
+- Joomla-Target-Platform: {{targetplatformHtml}}
 - Requires: {{requires}}
