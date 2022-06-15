@@ -26,10 +26,10 @@
 
 	<files>
 		<filename plugin="{{filename}}">{{filename}}.php</filename>
-		<filename>LICENSE.txt</filename>
 		<filename>installerScript.php</filename>
-		<folder>src</folder>
+		<filename>LICENSE.txt</filename>
 		<folder>language</folder>
+		<folder>src</folder>
 	</files>
 
 	<media destination="{{name}}" folder="media">
