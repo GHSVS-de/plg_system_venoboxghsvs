@@ -1,12 +1,27 @@
-const fse = require('fs-extra');
-const pc = require('picocolors');
-const path = require("path");
-const replaceXml = require('./build/replaceXml.js');
-const helper = require('./build/helper.js');
+#!/usr/bin/env node
+const path = require('path');
+
+/* Configure START */
+const pathBuildKram = path.resolve("../buildKramGhsvs");
+const updateXml = `${pathBuildKram}/build/update.xml`;
+const changelogXml = `${pathBuildKram}/build/changelog.xml`;
+const releaseTxt = `${pathBuildKram}/build/release.txt`;
+/* Configure END */
+
+const replaceXml = require(`${pathBuildKram}/build/replaceXml.js`);
+const helper = require(`${pathBuildKram}/build/helper.js`);
+
+const pc = require(`${pathBuildKram}/node_modules/picocolors`);
+const fse = require(`${pathBuildKram}/node_modules/fs-extra`);
+
+let replaceXmlOptions = {};
+let zipOptions = {};
+let from = "";
+let to = "";
 
 const {
-	name,
 	filename,
+	name,
 	version,
 } = require("./package.json");
 
@@ -25,56 +40,90 @@ let versionSub = '';
 	];
 	await helper.cleanOut(cleanOuts);
 
-	versionSub = await helper.findVersionSub (
+	versionSub = await helper.findVersionSubSimple (
 		path.join(source, `package.json`),
 		'Venobox');
-
 	console.log(pc.magenta(pc.bold(`versionSub identified as: "${versionSub}"`)));
 
-	await fse.copy(`${source}/dist/venobox.js`,
-		`${target}/js/venobox/venobox.js`
+	from = `${source}/dist/venobox.js`
+	to = `${target}/js/venobox/venobox.js`
+	await fse.copy(from, to
 	).then(
-		answer => console.log(pc.yellow(pc.bold(
-			`Copied unminified "venobox.js" into "${target}".`)))
+		answer => console.log(
+			pc.yellow(pc.bold(`Copied "${from}" to "${to}".`))
+		)
 	);
 
-	await fse.copy(`${source}/dist/venobox.min.js`,
-		`${target}/js/venobox/venobox.min.js`
+	from = `${source}/dist/venobox.min.js`
+	to = `${target}/js/venobox/venobox.min.js`
+	await fse.copy(from, to
 	).then(
-		answer => console.log(pc.yellow(pc.bold(
-			`Copied minified "venobox.min.js" into "${target}".`)))
+		answer => console.log(
+			pc.yellow(pc.bold(`Copied "${from}" to "${to}".`))
+		)
 	);
 
-	await fse.copy(`${source}/dist/venobox.css`,
-		`${target}/css/venobox/venobox.css`
+	from = `${from}.map`
+	to = `${to}.map`
+	await fse.copy(from, to
 	).then(
-		answer => console.log(pc.yellow(pc.bold(
-			`Copied unminified "venobox.css" into "${target}".`)))
+		answer => console.log(
+			pc.yellow(pc.bold(`Copied "${from}" to "${to}".`))
+		)
 	);
 
-	await fse.copy(`${source}/dist/venobox.min.css`,
-		`${target}/css/venobox/venobox.min.css`
+	from = `${source}/dist/venobox.css`
+	to = `${target}/css/venobox/venobox.css`
+	await fse.copy(from, to
 	).then(
-		answer => console.log(pc.yellow(pc.bold(
-			`Copied minified "venobox.min.css" into "${target}".`)))
+		answer => console.log(
+			pc.yellow(pc.bold(`Copied "${from}" to "${to}".`))
+		)
 	);
 
-	await fse.copy(`${source}/LICENSE`,
-		`${target}/LICENSE_venobox.txt`
+	from = `${source}/dist/venobox.min.css`
+	to = `${target}/css/venobox/venobox.min.css`
+	await fse.copy(from, to
 	).then(
-		answer => console.log(pc.yellow(pc.bold(
-			`Copied Venobox "LICENSE" to "${target}/LICENSE_venobox.txt".`)))
+		answer => console.log(
+			pc.yellow(pc.bold(`Copied "${from}" to "${to}".`))
+		)
 	);
 
-	await fse.copy("./src", "./package"
+	from = `${from}.map`
+	to = `${to}.map`
+	await fse.copy(from, to
 	).then(
-		answer => console.log(pc.yellow(pc.bold(`Copied "./src" to "./package".`)))
+		answer => console.log(
+			pc.yellow(pc.bold(`Copied "${from}" to "${to}".`))
+		)
 	);
 
-	await fse.copy("./media", "./package/media"
+	from = `${source}/LICENSE`
+	to = `${target}/LICENSE_venobox.txt`
+	await fse.copy(from, to
 	).then(
-		answer => console.log(pc.yellow(pc.bold(
-			`Copied "./media" to "./package".`)))
+		answer => console.log(
+			pc.yellow(pc.bold(`Copied "${from}" to "${to}".`))
+		)
+	);
+
+	from = `./src`;
+	to = `./package`;
+	await fse.copy(from, to
+	).then(
+		answer => console.log(
+			pc.yellow(pc.bold(`Copied "${from}" to "${to}".`))
+		)
+	);
+
+	from = "./media";
+	to = "./package/media";
+	await fse.copy(from, to
+	).then(
+		answer => console.log(
+			pc.yellow(pc.bold(`Copied "${from}" to "${to}".`))
+		)
 	);
 
 	if (!(await fse.exists("./dist")))
@@ -87,20 +136,27 @@ let versionSub = '';
 
 	const zipFilename = `${name}-${version}_${versionSub}.zip`;
 
-	await replaceXml.main(Manifest, zipFilename);
+	replaceXmlOptions = {
+		"xmlFile": Manifest,
+		"zipFilename": zipFilename,
+		"checksum": "",
+		"dirname": __dirname
+	};
+
+	await replaceXml.main(replaceXmlOptions);
 	await fse.copy(`${Manifest}`, `./dist/${manifestFileName}`).then(
 		answer => console.log(pc.yellow(pc.bold(
 			`Copied "${manifestFileName}" to "./dist".`)))
 	);
 
-	// Create zip file and detect checksum then.
-	const zipFilePath = `./dist/${zipFilename}`;
+	// ## Create zip file and detect checksum then.
+	const zipFilePath = path.resolve(`./dist/${zipFilename}`);
 
-	const zip = new (require('adm-zip'))();
-	zip.addLocalFolder("package", false);
-	await zip.writeZip(`${zipFilePath}`);
-	console.log(pc.cyan(pc.bold(pc.bgRed(
-		`./dist/${zipFilename} written.`))));
+	zipOptions = {
+		"source": path.resolve("package"),
+		"target": zipFilePath
+	};
+	await helper.zip(zipOptions)
 
 	const Digest = 'sha256'; //sha384, sha512
 	const checksum = await helper.getChecksum(zipFilePath, Digest)
@@ -118,29 +174,26 @@ let versionSub = '';
 		return '';
 	});
 
-	let xmlFile = 'update.xml';
-	await fse.copy(`./${xmlFile}`, `./dist/${xmlFile}`).then(
-		answer => console.log(pc.yellow(pc.bold(
-			`Copied "${xmlFile}" to ./dist.`)))
-	);
-	await replaceXml.main(`${__dirname}/dist/${xmlFile}`, zipFilename, checksum);
+	replaceXmlOptions.checksum = checksum;
 
-	xmlFile = 'changelog.xml';
-	await fse.copy(`./${xmlFile}`, `./dist/${xmlFile}`).then(
-		answer => console.log(pc.yellow(pc.bold(
-			`Copied "${xmlFile}" to ./dist.`)))
-	);
-	await replaceXml.main(`${__dirname}/dist/${xmlFile}`, zipFilename, checksum);
+	// Bei diesen werden zuerst Vorlagen nach dist/ kopiert und dort erst "replaced".
+	for (const file of [updateXml, changelogXml, releaseTxt])
+	{
+		from = file;
+		to = `./dist/${path.win32.basename(file)}`;
+		await fse.copy(from, to
+		).then(
+			answer => console.log(
+				pc.yellow(pc.bold(`Copied "${from}" to "${to}".`))
+			)
+		);
 
-	xmlFile = 'release.txt';
-	await fse.copy(`./${xmlFile}`, `./dist/${xmlFile}`).then(
-		answer => console.log(pc.yellow(pc.bold(
-			`Copied "${xmlFile}" to ./dist.`)))
-	);
-	await replaceXml.main(`${__dirname}/dist/${xmlFile}`, zipFilename, checksum);
+		replaceXmlOptions.xmlFile = path.resolve(to);
+		await replaceXml.main(replaceXmlOptions);
+	}
 
 	cleanOuts = [
-		`./package`
+		`./package`,
 	];
 	await helper.cleanOut(cleanOuts).then(
 		answer => console.log(pc.cyan(pc.bold(pc.bgRed(
