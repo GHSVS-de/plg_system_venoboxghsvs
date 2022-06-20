@@ -37,9 +37,7 @@
 		<folder>js</folder>
 		<filename>LICENSE_venobox.txt</filename>
 	</media>
-
-	<namespace path="src">Joomla\Plugin\System\VenoboxGhsvs</namespace>
-
+	{{namespace}}
 	<config>
 		<fields name="params" addfieldpath="plugins/system/{{filename}}/src/Field">
 
