@@ -2,8 +2,8 @@
 	"name": "plg_system_venoboxghsvs",
 	"nameReal": "plg_system_venoboxghsvs",
 	"filename": "venoboxghsvs",
-	"version": "2021.12.21",
-	"versionCompare": "2021.09.14",
+	"version": "2022.06.20",
+	"versionCompare": "2021.12.21",
 	"update": {
 		"type": "plugin",
 		"folder": "system",
@@ -12,11 +12,14 @@
 		"targetplatform": [
 			"3.*",
 			"4.*"
-		]
+		],
+		"namespace": "Joomla\\Plugin\\System\\VenoboxGhsvs"
 	},
 	"releaseTxt": {
 		"title": "Joomla system plugin VenoboxGhsvs-v2plus",
-		"requires": []
+		"requires": [],
+		"uses": ["https://github.com/nicolafranchini/VenoBox"],
+		"language": []
 	},
 	"changelog": {
 		"projecturl": "https://github.com/GHSVS-de/plg_system_venoboxghsvs",
@@ -26,9 +29,10 @@
 		"docsEN": "",
 		"lastTests": [
 			"PHP 8.0",
+			"PHP 8.1",
 			"PHP 7.4",
-			"Joomla 3.10.4",
-			"Joomla 4.0.5"
+			"Joomla 3.10",
+			"Joomla 4.1"
 		]
 	},
 	"minimumPhp": "7.4.0",
@@ -41,13 +45,11 @@
 	"copyright": "(C) 2020, G@HService Berlin Neukölln, Volkmar Volli Schlothauer.",
 	"author": {
 		"name": "G@HService Berlin Neukölln, Volkmar Volli Schlothauer",
-		"email": "",
 		"url": "https://ghsvs.de"
 	},
 	"contributors": [
 		{
 			"name": "G@HService Berlin Neukölln, Volkmar Volli Schlothauer",
-			"email": "",
 			"url": "https://ghsvs.de"
 		}
 	],
@@ -60,27 +62,20 @@
 		"images"
 	],
 	"private": false,
-	"description": "Joomla system plugin. Integrate Venobox v2+ via JHtml/HtmlHelper in Joomla.",
+	"description": "Joomla system plugin. Integrate Venobox v2+ via JHtml/HTMLHelper in Joomla.",
 	"license": "GPL-3.0",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/GHSVS-de/plg_system_venoboxghsvs.git"
 	},
 	"scripts": {
-		"g-build": "node build.js",
-		"g-npm-update-check": "ncu",
-		"g-ncu-override-json": "ncu -u"
+		"build": "node build.js",
+		"updateCheck": "npm outdated",
+		"update": "npm update --save-dev"
 	},
 	"dependencies": {
-		"npm-check-updates": "^12.0.5",
 		"venobox": "^2.0.4"
 	},
-	"devDependencies": {
-		"adm-zip": "^0.5.9",
-		"picocolors": "^1.0.0",
-		"fs-extra": "10.0.0",
-		"path": "^0.12.7",
-		"rimraf": "3.0.2"
-	},
+	"devDependencies": {},
 	"browserslist": []
 }
