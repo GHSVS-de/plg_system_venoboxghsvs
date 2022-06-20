@@ -20,7 +20,7 @@
 
 - Uses VenoBox library (https://github.com/nicolafranchini/VenoBox)
 - Integrates a Venobox JHtml helper.
-- - Loads standard CSS and JS.
+  - Loads standard CSS and JS.
 
 Venobox js requires:
 - jQuery >= 1.7.0
@@ -93,16 +93,21 @@ JHtml::_('plgvenoboxghsvs.venobox'
 </a>
 ```
 
+-----------------------------------------------------
+
 # My personal build procedure (WSL 1, Debian, Win 10)
-- - If new Venobox release out adapt your custom venobox-jquery-slim.js.
+
+**@since v???: Build procedure uses local repo fork of https://github.com/GHSVS-de/buildKramGhsvs**
 
 - Prepare/adapt `./package.json`.
 - `cd /mnt/z/git-kram/plg_system_venoboxghsvs`
 
 ## node/npm updates/installation
-- `npm run g-npm-update-check` or (faster) `ncu`
-- `npm run g-ncu-override-json` (if needed) or (faster) `ncu -u`
-- `npm install` (if needed)
+- `npm install` (if never done before)
+
+### Update dependencies
+- `npm run updateCheck` or (faster) `npm outdated`
+- `npm run update` (if needed) or (faster) `npm update --save-dev`
 
 ## Build installable ZIP package
 - `node build.js`
