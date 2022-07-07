@@ -2,23 +2,16 @@
 /*
 Aufruf via:
 HTMLHelper::_('plgvenoboxghsvs.venobox', [optional options]);
-- Diese Datei ist die Joomla 3 Version.
+- Diese Datei ist die Joomla 4 Version.
 */
+
+namespace Joomla\Plugin\System\VenoboxGhsvs\Html;
 
 \defined('_JEXEC') or die;
 
-if (version_compare(JVERSION, '4', 'lt'))
-{
-  JLoader::registerNamespace(
-    'Joomla\Plugin\System\VenoboxGhsvs',
-    dirname(__DIR__),
-    false, false, 'psr4'
-  );
-}
-
 use Joomla\Plugin\System\VenoboxGhsvs\Helper\VenoboxGhsvsHelper;
 
-abstract class JHtmlPlgvenoboxghsvs
+abstract class VenoboxGhsvs
 {
 	public static function venobox($selector = null, $options = [])
 	{

@@ -2,7 +2,7 @@
 	"name": "plg_system_venoboxghsvs",
 	"nameReal": "plg_system_venoboxghsvs",
 	"filename": "venoboxghsvs",
-	"version": "2022.06.20",
+	"version": "2022.07.07-dev",
 	"versionCompare": "2021.12.21",
 	"update": {
 		"type": "plugin",
