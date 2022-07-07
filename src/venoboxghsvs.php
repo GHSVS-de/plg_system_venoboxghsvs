@@ -14,7 +14,18 @@ class PlgSystemvenoboxGhsvs extends CMSPlugin
 
 		if (!$this->app->isClient('administrator'))
 		{
-			HTMLHelper::addIncludePath(__DIR__ . '/src/Html');
+			if (version_compare(JVERSION, '4', 'lt'))
+			{
+				HTMLHelper::addIncludePath(__DIR__ . '/src/Html');
+			}
+			else
+			{
+				HTMLHelper::getServiceRegistry()->register(
+					'plgvenoboxghsvs',
+					'Joomla\Plugin\System\VenoboxGhsvs\Html\VenoboxGhsvs',
+					true
+				);
+			}
 		}
 	}
 }

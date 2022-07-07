@@ -80,9 +80,7 @@ JHtml::_('plgvenoboxghsvs.venobox'
 		'titleColor' => '#000',
 		'closeBackground' => '#fff',
 		'closeColor' => '#f00',
-		'arrowsColor' => "#000000",
-		// Shall JQuery load on 'ready' or on 'load'. Default: 'ready'.
-		'ready_or_load' => $plgParams->get('ready_or_load', 'ready')
+		'arrowsColor' => "#000000"
 	]
 );
 ```
