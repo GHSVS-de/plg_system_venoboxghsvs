@@ -81,6 +81,8 @@ let versionSub = '';
 	to = "./package/media";
 	await helper.copy(from, to);
 
+	await helper.gzip([to]);
+
 	await helper.mkdir('./dist');
 
 	const zipFilename = `${name}-${version}_${versionSub}.zip`;
