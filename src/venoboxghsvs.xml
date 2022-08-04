@@ -35,6 +35,7 @@
 	<media destination="{{name}}" folder="media">
 		<folder>css</folder>
 		<folder>js</folder>
+		<filename>joomla.asset.json</filename>
 		<filename>LICENSE_venobox.txt</filename>
 	</media>
 	{{namespace}}
