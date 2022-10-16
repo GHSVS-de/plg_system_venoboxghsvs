@@ -10,12 +10,12 @@
 	<description>{{nameUpper}}_XML_DESCRIPTION</description>
 
 	<updateservers>
-		<server type="extension" priority="1" name="{{nameUpper}}">https://raw.githubusercontent.com/GHSVS-de/upadateservers/master/{{name}}-update.xml</server>
+		<server type="extension" priority="1" name="{{nameUpper}}">{{xmlserver}}/{{name}}-update.xml</server>
 	</updateservers>
 
-	<changelogurl>https://raw.githubusercontent.com/GHSVS-de/upadateservers/master/{{name}}-changelog.xml</changelogurl>
+	<changelogurl>{{xmlserver}}/{{name}}-changelog.xml</changelogurl>
 
-	<infourl>https://updates.ghsvs.de/changelog.php?file={{name}}</infourl>
+	<infourl>{{infourl}}?file={{name}}</infourl>
 
 	<scriptfile>installerScript.php</scriptfile>
 	<minimumPhp>{{minimumPhp}}</minimumPhp>
