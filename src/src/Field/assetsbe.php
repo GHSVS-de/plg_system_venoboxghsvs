@@ -11,7 +11,7 @@ If attributs loadjs or loadcss or loadJQuery are missing their default value is 
 Expects backend.css and/or backend.js in relative media path of $basepath
 */
 
-defined('JPATH_PLATFORM') or die;
+defined('_JEXEC') or die;
 
 use Joomla\CMS\Factory;
 use Joomla\CMS\Form\FormField;
