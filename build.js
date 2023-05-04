@@ -135,7 +135,7 @@ let versionSub = '';
 	}
 
 	cleanOuts = [
-		//`./package`,
+		`./package`,
 	];
 	await helper.cleanOut(cleanOuts).then(
 		answer => console.log(pc.cyan(pc.bold(pc.bgRed(
