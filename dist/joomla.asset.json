@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.joomla.org/schemas/json-schema/web_assets.json",
+  "name": "plg_system_venoboxghsvs",
+  "version": "2022.08.04",
+	"versionSub": "2.0.4",
+  "description": "Joomla system plugin. Integrate Venobox v2+ via JHtml/HTMLHelper in Joomla.",
+  "license": "GNU General Public License version 3 or later; see LICENSE.txt.",
+	"assets": [
+		{
+			"name": "plg_system_venoboxghsvs.all",
+			"type": "preset",
+			"dependencies": [
+				"plg_system_venoboxghsvs.core#script",
+				"plg_system_venoboxghsvs.core#style",
+				"plg_system_venoboxghsvs.user#style"
+			]
+		},
+		{
+			"name": "plg_system_venoboxghsvs.core",
+			"type": "script",
+			"uri": "plg_system_venoboxghsvs/venobox/venobox.js",
+			"version": "2.0.4"
+		},
+		{
+			"name": "plg_system_venoboxghsvs.core",
+			"description": "Das weight nur, weil ich im Moment denke, ich hätte das gerne nach der template.css.",
+			"type": "style",
+			"uri": "plg_system_venoboxghsvs/venobox/venobox.css",
+			"weight": "50",
+			"version": "2.0.4"
+		},
+		{
+			"name": "plg_system_venoboxghsvs.user",
+			"description": "Custom CSS file TEMPLATE-ASSETS/css/venobox.css.",
+			"type": "style",
+			"weight": 500,
+			"uri": "venobox.css"
+		}
+	]
+}

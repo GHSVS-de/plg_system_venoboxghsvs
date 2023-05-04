@@ -14,7 +14,14 @@ const helper = require(`${pathBuildKram}/build/helper.js`);
 const pc = require(`${pathBuildKram}/node_modules/picocolors`);
 // const fse = require(`${pathBuildKram}/node_modules/fs-extra`);
 
-let replaceXmlOptions = {};
+let replaceXmlOptions = {
+	"xmlFile": "",
+	"zipFilename": "",
+	"checksum": "",
+	"dirname": __dirname,
+	"jsonString": "",
+	"versionSub": ""
+};
 let zipOptions = {};
 let from = "";
 let to = "";
@@ -28,7 +35,7 @@ const {
 const manifestFileName = `${filename}.xml`;
 const Manifest = `${__dirname}/package/${manifestFileName}`;
 const source = `${__dirname}/node_modules/venobox`;
-const target = `./media`;
+const target = `${__dirname}/package/media`;
 let versionSub = '';
 
 (async function exec()
@@ -40,10 +47,19 @@ let versionSub = '';
 	];
 	await helper.cleanOut(cleanOuts);
 
+	await helper.mkdir('./package');
+	await helper.mkdir('./dist');
+
 	versionSub = await helper.findVersionSubSimple (
 		path.join(source, `package.json`),
 		'Venobox');
 	console.log(pc.magenta(pc.bold(`versionSub identified as: "${versionSub}"`)));
+
+	replaceXmlOptions.versionSub = versionSub;
+
+	from = `./media`;
+	to = target;
+	await helper.copy(from, to)
 
 	from = `${source}/dist/venobox.js`
 	to = `${target}/js/venobox/venobox.js`
@@ -77,22 +93,18 @@ let versionSub = '';
 	to = `./package`;
 	await helper.copy(from, to);
 
-	from = "./media";
-	to = "./package/media";
-	await helper.copy(from, to);
+	await helper.gzip([target]);
 
-	await helper.gzip([to]);
+	from = path.resolve('package', 'media', 'joomla.asset.json');
+	replaceXmlOptions.xmlFile = from;
+	await replaceXml.main(replaceXmlOptions);
+	await helper.copy(from, `./dist/joomla.asset.json`);
 
-	await helper.mkdir('./dist');
 
 	const zipFilename = `${name}-${version}_${versionSub}.zip`;
 
-	replaceXmlOptions = {
-		"xmlFile": Manifest,
-		"zipFilename": zipFilename,
-		"checksum": "",
-		"dirname": __dirname
-	};
+	replaceXmlOptions.xmlFile = Manifest;
+	replaceXmlOptions.zipFilename = zipFilename;
 
 	await replaceXml.main(replaceXmlOptions);
 
@@ -123,7 +135,7 @@ let versionSub = '';
 	}
 
 	cleanOuts = [
-		`./package`,
+		//`./package`,
 	];
 	await helper.cleanOut(cleanOuts).then(
 		answer => console.log(pc.cyan(pc.bold(pc.bgRed(
