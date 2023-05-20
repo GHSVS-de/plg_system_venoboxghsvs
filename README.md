@@ -1,32 +1,26 @@
-# plg_system_venoboxghsvs-v2plus aka plg_system_venoboxghsvs for Joomla
+# Joomla plugin plg_system_venoboxghsvs-v2plus aka plg_system_venoboxghsvs
 
-# This README is not up-to-date in detail!
+- Uses VenoBox library (https://github.com/nicolafranchini/VenoBox) version 2+
+- Integrates a Venobox JHtml/HTMLHelper helper.
+  - Loads VB standard CSS and JS.
 
-## In advance
+## In advance. For updaters using VB versions 1.
+- You can update from earlier versions of my Joomla plugin (that used Venobox v1.x), but you should know that
+- - my plugin does not catch outdated 1.x configuration parameters. They are going nowhere.
+- - you don't get any automated update hint in Joomla backend for the step 1.x to 2.x. Simply install over it!
 - Since version 2021.12.21 this Joomla plugin uses Venobox version 2.x+ which doesn't require JQuery anymore.
 - Configuration settings in Venobox have changed. Some have been renamed. Some others were removed.
 - - See possible options on https://veno.es/venobox
 - I have removed all JQuery parts including the experimental JQuery-slim feature from the code of `plg_system_venoboxghsvs`.
 - - If you used the JQuery-Slim feature: This means that the associated CSS should also be removed if you used or created any.
-- You can update from earlier versions of my Joomla plugin (that used Venobox v1.x), but you should know that
-- - my plugin does not catch outdated 1.x configuration parameters. They are going nowhere.
-- - you don't get any automated update hint in Joomla backend for the step 1.x to 2.x. Simply install over it!
 - If you are looking for the old README for plugin versions with Venobox versions 1.x: https://github.com/GHSVS-de/plg_system_venoboxghsvs/tree/venobox-v1
 - - If you're searching for a version of this Joomla plugin that uses Venobox 1.x+: https://github.com/GHSVS-de/plg_system_venoboxghsvs/releases/tag/2021.09.14
 
-
-------
-# Old old old README (For the most part still correct, but not yet revised in detail.)
-
-- Uses VenoBox library (https://github.com/nicolafranchini/VenoBox)
-- Integrates a Venobox JHtml helper.
-  - Loads standard CSS and JS.
-
-Venobox js requires:
-- jQuery >= 1.7.0
-
-## After updates of older versions than V2021.02.27
+### After updates of older versions than V2021.02.27
 - Save the plugin once afterwards!!
+
+## German description/Deutsches Tutorial
+https://ghsvs.de/programmierer-schnipsel/joomla/294-jhtml-htmlhelper-helper-fuer-venobox-in-joomla
 
 ## Usage:
 
@@ -38,7 +32,7 @@ Venobox js requires:
 	Click me to open a fantastic image in pop-up
 </a>
 ```
-- Add PHP snippet in your Joomla code, e.g. in template.
+- Add PHP snippet in your Joomla code, e.g. in template index.php.
 
 ```
 Joomla\CMS\HTML\HTMLHelper::_('plgvenoboxghsvs.venobox');
@@ -51,7 +45,7 @@ JHtml::_('plgvenoboxghsvs.venobox');
 - Set your favorite default options in plugin configuration.
 - More possible venobox options can be found below headline "others" on https://veno.es/venobox.
 - All options are optional.
-- You can also use the `JHtml` call to pass over options.
+- You can also use the `JHtml`/`HTMLHelper` call to pass over options.
 
 #### Example for other selector than `.venobox`
 
@@ -68,26 +62,29 @@ JHtml::_('plgvenoboxghsvs.venobox'
 	Click me to open a fantastic image in pop-up
 </a>
 ```
+
 #### Example for other selector than `.venobox` plus individual configuration
 
-
 ```
-JHtml::_('plgvenoboxghsvs.venobox'
+Joomla\CMS\HTML\HTMLHelper::_('plgvenoboxghsvs.venobox'
 	[
 		'selector' => '.anotherCustomSelector',
 		'titleattr' => 'data-title',
-		'titleBackground' => '#fff',
-		'titleColor' => '#000',
-		'closeBackground' => '#fff',
-		'closeColor' => '#f00',
-		'arrowsColor' => "#000000"
+		'numeration' => true,
+		'infinigall' => true,
+		'share' => true
 	]
 );
 ```
 
 ```
-<a href="path/to/image.jpg" class="anotherCustomSelector">
-	Click me to open a fantastic image in pop-up
+<a href="path/to/image.jpg" class="anotherCustomSelector" data-title="Hello image 1"
+	data-gall="gallery01">
+	Click me to open a fantastic image in gallery pop-up
+</a>
+<a href="path/to/image2.jpg" class="anotherCustomSelector" data-title="Hello image 2"
+	data-gall="gallery01">
+	Click me to open a fantastic image 2 in gallery pop-up
 </a>
 ```
 
