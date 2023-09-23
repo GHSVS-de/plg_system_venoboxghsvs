@@ -19,7 +19,7 @@
 ### After updates of older versions than V2021.02.27
 - Save the plugin once afterwards!!
 
-## German description/Deutsches Tutorial
+## German description/Deutsche Beschreibung
 https://ghsvs.de/programmierer-schnipsel/joomla/294-jhtml-htmlhelper-helper-fuer-venobox-in-joomla
 
 ## Usage:
@@ -39,7 +39,7 @@ Joomla\CMS\HTML\HTMLHelper::_('plgvenoboxghsvs.venobox');
 ```
 or
 ```
-JHtml::_('plgvenoboxghsvs.venobox');
+Joomla\CMS\HTML\HTMLHelper::_('plgvenoboxghsvs.venobox');
 ```
 ### Configuration
 - Set your favorite default options in plugin configuration.
@@ -50,7 +50,7 @@ JHtml::_('plgvenoboxghsvs.venobox');
 #### Example for other selector than `.venobox`
 
 ```
-JHtml::_('plgvenoboxghsvs.venobox'
+Joomla\CMS\HTML\HTMLHelper::_('plgvenoboxghsvs.venobox'
 	[
 		'selector' => '.myCustomSelector'
 	]
@@ -109,7 +109,7 @@ Joomla\CMS\HTML\HTMLHelper::_('plgvenoboxghsvs.venobox'
 - New, installable ZIP is in `./dist` afterwards.
 - All packed files for this ZIP can be seen in `./package`. **But only if you disable deletion of this folder at the end of `build.js`**.
 
-### For Joomla update and changelog server
+### For Joomla update server
 - Create new release with new tag.
-- - See and copy and complete release description in `dist/release.txt`.
-- Extracts(!) of the update and changelog XML for update and changelog servers are in `./dist` as well. Copy/paste and make necessary additions.
+- - See and copy and complete release description in `dist/release_no-changelog.txt`.
+- Extracts(!) of the update XML for update servers are in `./dist` as well. Copy/paste and make necessary additions.
