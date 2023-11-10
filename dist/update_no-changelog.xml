@@ -1,0 +1,46 @@
+<!--PLG_SYSTEM_VENOBOXGHSVS Version 2023.11.05 Target platform: 4\.(3|4|5|6|7|8|9|10|11|12|13|14|15)-->
+	<update>
+		<name>PLG_SYSTEM_VENOBOXGHSVS</name>
+		<description>Joomla system plugin. Integrate Venobox v2+ via JHtml/HTMLHelper in Joomla.</description>
+		<element>venoboxghsvs</element>
+		<type>plugin</type>
+		<folder>system</folder>
+		<client>site</client>
+		<version>2023.11.05</version>
+		<infourl>https://github.com/GHSVS-de/plg_system_venoboxghsvs/releases/tag/2023.11.05</infourl>
+		<downloads>
+			<downloadurl type="full" format="zip">https://github.com/GHSVS-de/plg_system_venoboxghsvs/raw/2023.11.05/dist/plg_system_venoboxghsvs-2023.11.05_2.0.4.zip</downloadurl>
+		</downloads>
+		<tags>
+			<tag>stable</tag>
+		</tags>
+		<maintainer>G@HService Berlin Neukölln, Volkmar Volli Schlothauer</maintainer>
+		<maintainerurl>https://ghsvs.de</maintainerurl>
+		<targetplatform name="joomla" version="4\.(3|4|5|6|7|8|9|10|11|12|13|14|15)" />
+		<php_minimum>7.4.0</php_minimum>
+		<sha256>a89e2d21cbf0e752cebbcf0fda558a332bddfa25e58ed201124d471bb8a5b21a</sha256>
+	</update>
+<!--/PLG_SYSTEM_VENOBOXGHSVS Version 2023.11.05 Target platform: 4\.(3|4|5|6|7|8|9|10|11|12|13|14|15)-->
+<!--PLG_SYSTEM_VENOBOXGHSVS Version 2023.11.05 Target platform: 5.*-->
+	<update>
+		<name>PLG_SYSTEM_VENOBOXGHSVS</name>
+		<description>Joomla system plugin. Integrate Venobox v2+ via JHtml/HTMLHelper in Joomla.</description>
+		<element>venoboxghsvs</element>
+		<type>plugin</type>
+		<folder>system</folder>
+		<client>site</client>
+		<version>2023.11.05</version>
+		<infourl>https://github.com/GHSVS-de/plg_system_venoboxghsvs/releases/tag/2023.11.05</infourl>
+		<downloads>
+			<downloadurl type="full" format="zip">https://github.com/GHSVS-de/plg_system_venoboxghsvs/raw/2023.11.05/dist/plg_system_venoboxghsvs-2023.11.05_2.0.4.zip</downloadurl>
+		</downloads>
+		<tags>
+			<tag>stable</tag>
+		</tags>
+		<maintainer>G@HService Berlin Neukölln, Volkmar Volli Schlothauer</maintainer>
+		<maintainerurl>https://ghsvs.de</maintainerurl>
+		<targetplatform name="joomla" version="5.*" />
+		<php_minimum>7.4.0</php_minimum>
+		<sha256>a89e2d21cbf0e752cebbcf0fda558a332bddfa25e58ed201124d471bb8a5b21a</sha256>
+	</update>
+<!--/PLG_SYSTEM_VENOBOXGHSVS Version 2023.11.05 Target platform: 5.*-->

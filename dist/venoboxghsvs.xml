@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="plugin" client="site" group="system" method="upgrade">
+	<name>PLG_SYSTEM_VENOBOXGHSVS</name>
+	<author>G@HService Berlin Neukölln, Volkmar Volli Schlothauer</author>
+	<creationDate>2020-08-09</creationDate>
+	<copyright>(C) 2020, G@HService Berlin Neukölln, Volkmar Volli Schlothauer.</copyright>
+	<license>GNU General Public License version 3 or later; see LICENSE.txt.</license>
+	<authorUrl>https://ghsvs.de</authorUrl>
+	<version>2023.11.05</version>
+	<description>PLG_SYSTEM_VENOBOXGHSVS_XML_DESCRIPTION</description>
+
+	<updateservers>
+		<server type="extension" priority="1" name="PLG_SYSTEM_VENOBOXGHSVS">https://raw.githubusercontent.com/GHSVS-de/upadateservers/master/plg_system_venoboxghsvs-update.xml</server>
+	</updateservers>
+
+	<infourl>https://github.com/GHSVS-de/plg_system_venoboxghsvs/releases/tag/2023.11.05</infourl>
+
+	<scriptfile>installerScript.php</scriptfile>
+	<minimumPhp>7.4.0</minimumPhp>
+	<maximumPhp></maximumPhp>
+	<minimumJoomla>4.3.0</minimumJoomla>
+	<maximumJoomla>5.9999.9999</maximumJoomla>
+	<allowDowngrades>1</allowDowngrades>
+
+	<files>
+		<folder plugin="venoboxghsvs">services</folder>
+		<folder>language</folder>
+		<folder>src</folder>
+		<filename>installerScript.php</filename>
+		<filename>LICENSE.txt</filename>
+	</files>
+
+	<media destination="plg_system_venoboxghsvs" folder="media">
+		<folder>css</folder>
+		<folder>js</folder>
+		<filename>joomla.asset.json</filename>
+		<filename>LICENSE_venobox.txt</filename>
+	</media>
+	<namespace path="src">GHSVS\Plugin\System\VenoboxGhsvs</namespace>
+	<config addfieldprefix="GHSVS\Plugin\System\VenoboxGhsvs\Field">
+		<fields name="params">
+
+			<fieldset name="basic">
+				<field type="hidden" default="1" name="venoboxghsvsplugin"/>
+
+				<field name="version" type="Version"
+					label="JVERSION"/>
+
+				<field name="backendAssets" type="AssetsBe" hidden="true"
+					loadcss="true" loadjs="false" loadJQuery="false"/>
+			</fieldset><!--basic-->
+
+			<fieldset name="configuration"
+				label="PLG_SYSTEM_VENOBOXGHSVS_FIELDSET_CONFIGURATION">
+
+				<field type="note" name="selectorSpacer"
+					class="alert alert-info mb-0 w-100"
+					label="PLG_SYSTEM_VENOBOXGHSVS_SELECTOR"
+					description="PLG_SYSTEM_VENOBOXGHSVS_SELECTOR_DESC" />
+
+				<field name="selector" type="text" default="" filter="string"
+					class="extended-width"
+					label="PLG_SYSTEM_VENOBOXGHSVS_SELECTOR" />
+
+				<field type="note" name="configurationSpacer"
+					class="alert alert-info mb-0 w-100 mt-3"
+					label="Optional(!) custom configuration below"
+					description="PLG_SYSTEM_VENOBOXGHSVS_FIELDSET_CONFIGURATION_DESC" />
+
+				<field name="configs" type="subform" min="0" max="30"
+					multiple="true"
+					label="" description=""
+					hiddenLabel="true"
+					formsource="plugins/system/venoboxghsvs/src/Form/subform.xml"
+					layout="joomla.form.field.subform.repeatable-table" groupByFieldset="false"
+					default='{"configs0":{"active":0,"parameter":"titleattr","value":"data-title"},"configs1":{"active":0,"parameter":"toolsBackground","value":"#fff"},"configs2":{"active":0,"parameter":"toolsColor","value":"#000"},"configs3":{"active":0,"parameter":"titlePosition","value":"bottom"}}'
+				/>
+			</fieldset>
+
+		</fields><!--/params-->
+	</config>
+</extension>

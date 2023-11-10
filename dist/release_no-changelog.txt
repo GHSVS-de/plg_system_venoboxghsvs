@@ -1,0 +1,31 @@
+2023.11.05
+
+Joomla system plugin VenoboxGhsvs-v2plus 2023.11.05
+
+Checksum entities: `&lt;sha256&gt;a89e2d21cbf0e752cebbcf0fda558a332bddfa25e58ed201124d471bb8a5b21a&lt;/sha256&gt;`
+
+Joomla system plugin. Integrate Venobox v2+ via JHtml/HTMLHelper in Joomla.
+
+### Jommla 4.3+, Joomla 5
+
+### Download
+[plg_system_venoboxghsvs-2023.11.05_2.0.4.zip](https://github.com/GHSVS-de/plg_system_venoboxghsvs/raw/2023.11.05/dist/plg_system_venoboxghsvs-2023.11.05_2.0.4.zip)
+
+### Joomla-Target-Platform(s)
+4\.(3|4|5|6|7|8|9|10|11|12|13|14|15), 5.&ast;
+
+### For the interested ones
+- New "modern" plugin structure and lots of reviews.
+- Deutsche Beschreibung: https://ghsvs.de/programmierer-schnipsel/joomla/294-jhtml-htmlhelper-helper-fuer-venobox-in-joomla
+- English Description:
+- [Compare releases 2023.09.24...2023.11.05](https://github.com/GHSVS-de/plg_system_venoboxghsvs/compare/2023.09.24...2023.11.05)
+- minimumJoomla: 4.3.0
+- maximumJoomla: 5.9999.9999
+- minimumPhp: 7.4.0
+- maximumPhp:
+- Checksum: `<sha256>a89e2d21cbf0e752cebbcf0fda558a332bddfa25e58ed201124d471bb8a5b21a</sha256>`
+- Readme: https://github.com/GHSVS-de/plg_system_venoboxghsvs#readme
+- Updates XML: https://raw.githubusercontent.com/GHSVS-de/upadateservers/master/plg_system_venoboxghsvs-update.xml
+- Last tests: PHP 8.2<br>Joomla 4.4<br>Joomla 5.0
+- Language files: en-GB
+- Uses: https://github.com/nicolafranchini/VenoBox

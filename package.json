@@ -2,8 +2,8 @@
 	"name": "plg_system_venoboxghsvs",
 	"nameReal": "plg_system_venoboxghsvs",
 	"filename": "venoboxghsvs",
-	"version": "2023.09.24",
-	"versionCompare": "2022.08.04",
+	"version": "2023.11.05",
+	"versionCompare": "2023.09.24",
 	"update": {
 		"infourl": "https://github.com/GHSVS-de/plg_system_venoboxghsvs{{thisRelease}}",
 		"type": "plugin",
@@ -11,17 +11,16 @@
 		"client": "site",
 		"tag": "stable",
 		"targetplatform": [
-			"3.*",
-			"4.*",
+			"4\\.(3|4|5|6|7|8|9|10|11|12|13|14|15)",
 			"5.*"
 		],
-		"namespace": "Joomla\\Plugin\\System\\VenoboxGhsvs"
+		"namespace": "GHSVS\\Plugin\\System\\VenoboxGhsvs"
 	},
 	"releaseTxt": {
 		"title": "Joomla system plugin VenoboxGhsvs-v2plus",
 		"requires": [],
 		"uses": ["https://github.com/nicolafranchini/VenoBox"],
-		"language": []
+		"language": ["en-GB"]
 	},
 	"changelog": {
 		"projecturl": "https://github.com/GHSVS-de/plg_system_venoboxghsvs",
@@ -31,16 +30,13 @@
 		"docsEN": "",
 		"lastTests": [
 			"PHP 8.2",
-			"PHP 8.1",
-			"PHP 7.4",
-			"Joomla 3.10",
-			"Joomla 4.3",
-			"Joomla 5.0.0-beta3-dev"
+			"Joomla 4.4",
+			"Joomla 5.0"
 		]
 	},
 	"minimumPhp": "7.4.0",
-	"maximumPhp": "8.9999.9999",
-	"minimumJoomla": "3.10.4",
+	"maximumPhp": "",
+	"minimumJoomla": "4.3.0",
 	"maximumJoomla": "5.9999.9999",
 	"allowDowngrades": "1",
 	"creationDate": "2020-08-09",
