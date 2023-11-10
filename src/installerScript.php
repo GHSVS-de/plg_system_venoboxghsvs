@@ -35,6 +35,12 @@ class plgSystemVenoboxGhsvsInstallerScript extends InstallerScript
 	protected $deleteFiles = [
 		'/media/plg_system_venoboxghsvs/js/venobox/venobox-jquery-slim.js',
 		'/media/plg_system_venoboxghsvs/js/venobox/venobox-jquery-slim.min.js',
+		'/plugins/system/venoboxghsvs/language/en-GB/en-GB.plg_system_venoboxghsvs.ini',
+		'/plugins/system/venoboxghsvs/language/en-GB/en-GB.plg_system_venoboxghsvs.sys.ini',
+		'/plugins/system/venoboxghsvs/venoboxghsvs.php',
+		'/plugins/system/venoboxghsvs/src/Field/assetsbe.php',
+		'/plugins/system/venoboxghsvs/src/Html/plgvenoboxghsvs.php',
+		'/plugins/system/venoboxghsvs/src/Html/VenoboxGhsvs.php',
 	];
 
 	/**
@@ -47,10 +53,11 @@ class plgSystemVenoboxGhsvsInstallerScript extends InstallerScript
 	protected $deleteFolders = [
 		'/media/{{name}}',
 		'/media/plg_system_venoboxghsvs/_venobox-version',
-		'plugins/system/venoboxghsvs/myforms',
-		'plugins/system/venoboxghsvs/Helper',
-		'plugins/system/venoboxghsvs/fields',
-		'plugins/system/venoboxghsvs/html',
+		'/plugins/system/venoboxghsvs/myforms',
+		'/plugins/system/venoboxghsvs/Helper',
+		'/plugins/system/venoboxghsvs/fields',
+		'/plugins/system/venoboxghsvs/html',
+		'/plugins/system/venoboxghsvs/src/Html',
 	];
 
 	public function preflight($type, $parent)

@@ -1,25 +1,14 @@
 <?php
-/*
-Loads assets for backend settings of extension.
-
-Usage:
-<field name="assetsbe" type="plgSystemVenoboxGhsvs.assetsbe" hidden="true"
-	loadjs="false" loadJQuery="false" loadcss="true" />
-
-If attributs loadjs or loadcss or loadJQuery are missing their default value is TRUE => Assets will be loaded. Use explicit "false" to not load!
-
-Expects backend.css and/or backend.js in relative media path of $basepath
-*/
+namespace GHSVS\Plugin\System\VenoboxGhsvs\Field;
 
 defined('_JEXEC') or die;
 
-use Joomla\CMS\Factory;
 use Joomla\CMS\Form\FormField;
 use Joomla\CMS\HTML\HTMLHelper;
 
-class plgSystemVenoboxGhsvsFormFieldAssetsbe extends FormField
+class AssetsBeField extends FormField
 {
-	protected $type = 'assetsbe';
+	protected $type = 'AssetsBe';
 
 	// Path inside /media/.
 	protected $basePath = 'plg_system_venoboxghsvs';

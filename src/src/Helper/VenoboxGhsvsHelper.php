@@ -1,30 +1,22 @@
 <?php
 
-namespace Joomla\Plugin\System\VenoboxGhsvs\Helper;
+namespace GHSVS\Plugin\System\VenoboxGhsvs\Helper;
 
 \defined('_JEXEC') or die;
 
-use Joomla\CMS\Plugin\PluginHelper;
 use Joomla\Registry\Registry;
 use Joomla\CMS\Factory;
-use Joomla\CMS\HTML\HTMLHelper;
 
-abstract class VenoboxGhsvsHelper
+class VenoboxGhsvsHelper
 {
-	protected static $loadedPlugins = [];
 	protected static $loaded = [];
-	protected static $basepath = 'plg_system_venoboxghsvs/venobox';
-
 	protected static $plgParams;
-
-	protected static $isJ3 = true;
 
 	protected static $wa = null;
 
-	protected static function init()
+	protected function init()
 	{
-		self::$isJ3 = version_compare(JVERSION, '4', 'lt');
-		self::$plgParams = self::getPluginParams();
+		self::$plgParams = $this->getPluginParams();
 	}
 
 	/*
@@ -34,57 +26,38 @@ abstract class VenoboxGhsvsHelper
 	Irgendeinen Grund wirds schon geben ;-)
 	A: Ich denke mal, weil der Einstiegspunkt der JHtml-Helfer ist, der ja auch
 	ohne aktives Plugin verwendet werden kann. Irgend so was...
+	A2: Ich glaube A: ist hinfällig mit Joomla 4.3+/Joomla 5????
 	*/
-	public static function getPluginParams($plugin = ['system', 'venoboxghsvs'])
+	public function getPluginParams($plugin = ['system', 'venoboxghsvs'])
 	{
 		if (empty(self::$plgParams) || !(self::$plgParams instanceof Registry))
 		{
-			self::$plgParams = PluginHelper::getPlugin($plugin[0], $plugin[1]);
+			$model = Factory::getApplication()->bootComponent('plugins')
+				->getMVCFactory()->createModel('Plugin', 'Administrator', ['ignore_request' => true]);
+			$pluginObject = $model->getItem(['folder' => $plugin[0], 'element' => $plugin[1]]);
 
-			if (!empty(self::$plgParams->params))
-			{
-				self::$plgParams = new Registry(self::$plgParams->params);
-				self::$plgParams->set('isEnabled', 1);
-				self::$plgParams->set('isInstalled', 1);
-			}
-			elseif (\is_file(JPATH_PLUGINS . '/' . implode('/', $plugin) . '/' . $plugin[1] . '.php'))
-			{
-				$db = Factory::getDbo();
-				$query = $db->getQuery(true)
-					->select('params')
-					->from('#__extensions')
-					->where('type = ' . $db->q('plugin'))
-					->where('element = ' . $db->q($plugin[1]))
-					->where('folder = ' . $db->q($plugin[0]));
-				$db->setQuery($query);
-				self::$plgParams = $db->loadResult();
-
-				if (!empty(self::$plgParams->params))
-				{
-					self::$plgParams = new Registry(self::$plgParams->params);
-					self::$plgParams->set('isEnabled', 0);
-					self::$plgParams->set('isInstalled', 1);
-				}
-			}
-
-			if (empty(self::$plgParams))
+			if (!\is_object($pluginObject) || empty($pluginObject->params))
 			{
 				self::$plgParams = new Registry();
 				self::$plgParams->set('isEnabled', -1);
 				self::$plgParams->set('isInstalled', 0);
 			}
-		}
-
+			elseif (!($pluginObject->params instanceof Registry))
+				{
+				self::$plgParams = new Registry($pluginObject->params);
+				self::$plgParams->set('isEnabled', ($pluginObject->enabled ? 1 : 0));
+					self::$plgParams->set('isInstalled', 1);
+				}
+			}
 		return self::$plgParams;
 	}
 
-	public static function prepareDefaultOptions(string $sig) : Array
+	public function prepareDefaultOptions(string $sig) : Array
 	{
 		if (!isset(static::$loaded[__METHOD__][$sig]))
 		{
-			$plgParams = self::getPluginParams();
 			$options_default = [];
-			$configs = $plgParams->get('configs');
+			$configs = self::$plgParams->get('configs');
 
 			if (is_object($configs) && count(get_object_vars($configs)))
 			{
@@ -125,11 +98,10 @@ abstract class VenoboxGhsvsHelper
 		return static::$loaded[__METHOD__][$sig];
 	}
 
-	/*
-	Da ich im Ordner /Html einen Split zwischen Joomla 3 und 4 Datei gemacht habe.
-	*/
-	public static function venobox($selector = null, $options = [])
+	public function venobox($selector = null, $options = [])
 	{
+		$this->getWa();
+
 		// START B\C shit. $selector is deprecated.
 		$argList = func_get_args();
 
@@ -147,13 +119,11 @@ abstract class VenoboxGhsvsHelper
 			}
 		}
 
-		$pluginParams = self::getPluginParams();
-
 		if (!isset($options['selector']))
 		{
 			if (!($options['selector'] = $selector))
 			{
-				$selector = trim($pluginParams->get('selector', ''));
+				$selector = trim(self::$plgParams->get('selector', ''));
 				$options['selector'] = $selector ?: '.venobox';
 			}
 		}
@@ -166,71 +136,34 @@ abstract class VenoboxGhsvsHelper
 			return;
 		}
 
-		$wa = self::getWa();
-
 		if (!isset(static::$loaded[__METHOD__]['core']))
 		{
-			if ($wa)
-			{
-				$wa->usePreset('plg_system_venoboxghsvs.all');
-			}
-			else
-			{
-				$min = JDEBUG ? '' : '.min';
-				$version = JDEBUG ? time() : 'auto';
-
-				HTMLHelper::_('stylesheet',
-					static::$basepath . '/' . 'venobox' . $min . '.css',
-					['version' => $version, 'relative' => true]
-				);
-
-				// e.g. compiled from SCSS
-				$customCSSPath = 'templates/'
-					. Factory::getApplication()->getTemplate()
-					. '/css/venobox' . $min . '.css';
-
-				HTMLHelper::_('stylesheet',
-					$customCSSPath,
-					['version' => $version]
-				);
-
-				HTMLHelper::_('script',
-					static::$basepath . '/' . 'venobox' . $min . '.js',
-					['version' => $version, 'relative' => true]
-				);
-			}
+			self::$wa->usePreset('plg_system_venoboxghsvs.all');
 			static::$loaded[__METHOD__]['core'] = 1;
 		}
 
 		$options = \array_merge(
-			self::prepareDefaultOptions($sig),
+			$this->prepareDefaultOptions($sig),
 			$options
 		);
 
 		$js = 'document.addEventListener("DOMContentLoaded", (event) => {'
 			. 'new VenoBox(' . json_encode($options) . ')});';
 
-		if ($wa)
-		{
-			$wa->addInline(
-				'script',
-				$js,
-				['name' => 'plg_system_venoboxghsvs.' . 'selector-' . str_replace(' ', '', $sig)]
-			);
-		}
-		else
-		{
-			Factory::getDocument()->addScriptDeclaration($js);
-		}
+		self::$wa->addInline(
+			'script',
+			$js,
+			['name' => 'plg_system_venoboxghsvs.' . 'selector-' . str_replace(' ', '', $sig)]
+		);
 
 		static::$loaded[__METHOD__][$sig] = 1;
 	}
 
-	public static function getWa()
+	public function getWa()
 	{
-		self::init();
+		$this->init();
 
-		if (self::$isJ3 === false && empty(self::$wa))
+		if (empty(self::$wa))
 		{
 			self::$wa = Factory::getApplication()->getDocument()->getWebAssetManager();
 			self::$wa->getRegistry()->addExtensionRegistryFile('plg_system_venoboxghsvs');
