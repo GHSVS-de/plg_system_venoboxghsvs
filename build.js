@@ -100,7 +100,6 @@ let versionSub = '';
 	await replaceXml.main(replaceXmlOptions);
 	await helper.copy(from, `./dist/joomla.asset.json`);
 
-
 	const zipFilename = `${name}-${version}_${versionSub}.zip`;
 
 	replaceXmlOptions.xmlFile = Manifest;
