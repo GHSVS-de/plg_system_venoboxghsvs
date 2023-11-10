@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<extension type="{{type}}" client="{{client}}" group="{{folder}}" method="upgrade">
+<extension type="{{type}}" client="{{client}}" group="{{folder}}" method="{{method}}">
 	<name>{{nameUpper}}</name>
 	<author>{{authorName}}</author>
 	<creationDate>{{creationDate}}</creationDate>
@@ -23,11 +23,11 @@
 	<allowDowngrades>{{allowDowngrades}}</allowDowngrades>
 
 	<files>
-		<filename plugin="{{filename}}">{{filename}}.php</filename>
-		<filename>installerScript.php</filename>
-		<filename>LICENSE.txt</filename>
+		<folder plugin="{{filename}}">services</folder>
 		<folder>language</folder>
 		<folder>src</folder>
+		<filename>installerScript.php</filename>
+		<filename>LICENSE.txt</filename>
 	</files>
 
 	<media destination="{{name}}" folder="media">
@@ -37,11 +37,16 @@
 		<filename>LICENSE_venobox.txt</filename>
 	</media>
 	{{namespace}}
-	<config>
-		<fields name="params" addfieldpath="plugins/system/{{filename}}/src/Field">
+	<config{{addfieldprefix}}>
+		<fields name="params">
 
 			<fieldset name="basic">
-				<field name="backendAssets" type="plgsystemvenoboxghsvs.assetsbe"
+				<field type="hidden" default="1" name="{{filename}}plugin"/>
+
+				<field name="version" type="Version"
+					label="JVERSION"/>
+
+				<field name="backendAssets" type="AssetsBe" hidden="true"
 					loadcss="true" loadjs="false" loadJQuery="false"/>
 			</fieldset><!--basic-->
 
@@ -49,7 +54,7 @@
 				label="PLG_SYSTEM_VENOBOXGHSVS_FIELDSET_CONFIGURATION">
 
 				<field type="note" name="selectorSpacer"
-					class="alertsss alert-info"
+					class="alert alert-info mb-0 w-100"
 					label="PLG_SYSTEM_VENOBOXGHSVS_SELECTOR"
 					description="PLG_SYSTEM_VENOBOXGHSVS_SELECTOR_DESC" />
 
@@ -57,14 +62,8 @@
 					class="extended-width"
 					label="PLG_SYSTEM_VENOBOXGHSVS_SELECTOR" />
 
-				<field type="note" name="jquerySlimSpacer"
-					class="alertsss alert-info"
-					label="Load jquerySlim version"
-					description="PLG_SYSTEM_VENOBOXGHSVS_JQUERYSLIM_DESC"
-					/>
-
 				<field type="note" name="configurationSpacer"
-					class="alertsss alert-info"
+					class="alert alert-info mb-0 w-100 mt-3"
 					label="Optional(!) custom configuration below"
 					description="PLG_SYSTEM_VENOBOXGHSVS_FIELDSET_CONFIGURATION_DESC" />
 
