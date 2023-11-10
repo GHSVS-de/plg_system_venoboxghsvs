@@ -6,15 +6,15 @@
 
 ## In advance. For updaters using VB versions 1.
 - You can update from earlier versions of my Joomla plugin (that used Venobox v1.x), but you should know that
-- - my plugin does not catch outdated 1.x configuration parameters. They are going nowhere.
-- - you don't get any automated update hint in Joomla backend for the step 1.x to 2.x. Simply install over it!
+  - my plugin does not catch outdated 1.x configuration parameters. They are going nowhere.
+  - you don't get any automated update hint in Joomla backend for the step 1.x to 2.x. Simply install over it!
 - Since version 2021.12.21 this Joomla plugin uses Venobox version 2.x+ which doesn't require JQuery anymore.
 - Configuration settings in Venobox have changed. Some have been renamed. Some others were removed.
-- - See possible options on https://veno.es/venobox
+  - See possible options on https://veno.es/venobox
 - I have removed all JQuery parts including the experimental JQuery-slim feature from the code of `plg_system_venoboxghsvs`.
-- - If you used the JQuery-Slim feature: This means that the associated CSS should also be removed if you used or created any.
+  - If you used the JQuery-Slim feature: This means that the associated CSS should also be removed if you used or created any.
 - If you are looking for the old README for plugin versions with Venobox versions 1.x: https://github.com/GHSVS-de/plg_system_venoboxghsvs/tree/venobox-v1
-- - If you're searching for a version of this Joomla plugin that uses Venobox 1.x+: https://github.com/GHSVS-de/plg_system_venoboxghsvs/releases/tag/2021.09.14
+  - If you're searching for a version of this Joomla plugin that uses Venobox 1.x+: https://github.com/GHSVS-de/plg_system_venoboxghsvs/releases/tag/2021.09.14
 
 ### After updates of older versions than V2021.02.27
 - Save the plugin once afterwards!!
@@ -111,5 +111,5 @@ Joomla\CMS\HTML\HTMLHelper::_('plgvenoboxghsvs.venobox'
 
 ### For Joomla update server
 - Create new release with new tag.
-- - See and copy and complete release description in `dist/release_no-changelog.txt`.
+  - See and copy and complete release description in `dist/release_no-changelog.txt`.
 - Extracts(!) of the update XML for update servers are in `./dist` as well. Copy/paste and make necessary additions.
