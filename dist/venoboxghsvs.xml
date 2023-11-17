@@ -6,14 +6,14 @@
 	<copyright>(C) 2020, G@HService Berlin Neukölln, Volkmar Volli Schlothauer.</copyright>
 	<license>GNU General Public License version 3 or later; see LICENSE.txt.</license>
 	<authorUrl>https://ghsvs.de</authorUrl>
-	<version>2023.11.05</version>
+	<version>2023.11.17</version>
 	<description>PLG_SYSTEM_VENOBOXGHSVS_XML_DESCRIPTION</description>
 
 	<updateservers>
 		<server type="extension" priority="1" name="PLG_SYSTEM_VENOBOXGHSVS">https://raw.githubusercontent.com/GHSVS-de/upadateservers/master/plg_system_venoboxghsvs-update.xml</server>
 	</updateservers>
 
-	<infourl>https://github.com/GHSVS-de/plg_system_venoboxghsvs/releases/tag/2023.11.05</infourl>
+	<infourl>https://github.com/GHSVS-de/plg_system_venoboxghsvs/releases/tag/2023.11.17</infourl>
 
 	<scriptfile>installerScript.php</scriptfile>
 	<minimumPhp>7.4.0</minimumPhp>
