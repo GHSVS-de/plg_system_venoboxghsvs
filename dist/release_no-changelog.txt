@@ -28,7 +28,3 @@ Joomla system plugin. Integrate Venobox v2+ via JHtml/HTMLHelper in Joomla.
 - Language files: en-GB
 - Requires:
 - Uses: https://github.com/nicolafranchini/VenoBox
-- Contained packages (sub Joomla extensions):
-```
-
-```
