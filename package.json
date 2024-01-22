@@ -2,8 +2,8 @@
 	"name": "plg_system_venoboxghsvs",
 	"nameReal": "plg_system_venoboxghsvs",
 	"filename": "venoboxghsvs",
-	"version": "2023.11.17",
-	"versionCompare": "2023.11.05",
+	"version": "2024.01.22",
+	"versionCompare": "2023.11.17",
 	"update": {
 		"infourl": "https://github.com/GHSVS-de/plg_system_venoboxghsvs{{thisRelease}}",
 		"type": "plugin",
