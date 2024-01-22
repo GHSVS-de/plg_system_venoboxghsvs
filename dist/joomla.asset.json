@@ -1,8 +1,8 @@
 {
   "$schema": "https://developer.joomla.org/schemas/json-schema/web_assets.json",
   "name": "plg_system_venoboxghsvs",
-  "version": "2023.11.17",
-	"versionSub": "2.0.6",
+  "version": "2024.01.22",
+	"versionSub": "2.1.5",
   "description": "Joomla system plugin. Integrate Venobox v2+ via JHtml/HTMLHelper in Joomla.",
   "license": "GNU General Public License version 3 or later; see LICENSE.txt.",
 	"assets": [
@@ -19,7 +19,7 @@
 			"name": "plg_system_venoboxghsvs.core",
 			"type": "script",
 			"uri": "plg_system_venoboxghsvs/venobox/venobox.js",
-			"version": "2.0.6"
+			"version": "2.1.5"
 		},
 		{
 			"name": "plg_system_venoboxghsvs.core",
@@ -27,7 +27,7 @@
 			"type": "style",
 			"uri": "plg_system_venoboxghsvs/venobox/venobox.css",
 			"weight": "50",
-			"version": "2.0.6"
+			"version": "2.1.5"
 		},
 		{
 			"name": "plg_system_venoboxghsvs.user",
